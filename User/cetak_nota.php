@@ -13,7 +13,12 @@
  
 	<?php 
     include 'includes/connector.php';
-    include 'includes/fpdf.php';
+	include 'includes/fpdf.php';
+	session_start();
+if (isset($_GET['ID_DAFTAR']))
+{
+	$ID_DAFTAR=$_GET['ID_DAFTAR'];
+}
 	?>
  
         <div class="table-responsive">
@@ -36,7 +41,8 @@
         WHERE
 		daftar.ID_DAFTAR = bayar.ID_DAFTAR
 		AND daftar.ID_DAFTAR= detail_daftar.ID_DAFTAR
-		AND siswa.NISN = detail_daftar.NISN");
+		AND siswa.NISN = detail_daftar.NISN
+		AND daftar.ID_DAFTAR=$ID_DAFTAR");
 		while($data = mysqli_fetch_array($sql)){
 		?>
 		<tr>
