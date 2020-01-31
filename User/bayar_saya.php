@@ -28,6 +28,7 @@ include 'includes/connector.php';
 
 </head>
 <body>
+    <form action="konfirmasi.php" method="post">
     <div class="container container-fluid-lg">
     <div class="row justify-content-center">
     <div class="col-lg-12 m-5">
@@ -82,9 +83,10 @@ include 'includes/connector.php';
                                     <td>'.$jenis_lomba.'</td>
                                     <td>'.$status.'</td>
                                     <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" id="detail" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                                     Detail
                                   </button>
+                                  <a href="konfirmasi_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '" class="btn btn-primary" onclick="return confirm(\'Apakah Anda sudah melakukan pembayaran di Bank?\')">Konfirmasi Pembayaran</a>
                                     </td>
                                 </tr>
                                 ';
@@ -102,9 +104,10 @@ include 'includes/connector.php';
                     <body>
 
                 </table>
+                </form>
             </div>
         
-<!-- Batas Tabel Daftar -->
+<!-- Batas Tabel Bayar -->
         </div>
     </div>
 </div>
@@ -125,14 +128,13 @@ include 'includes/connector.php';
 <body>
 
 <div class="container mt-3">
- 
-
-  <!-- The Modal -->
+  <!-- The Modal detail bayar -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
       
         <!-- Modal Header -->
+        <form action="bayar_query.php" method="post">
         <div class="modal-header">
             <div class="card p shadow"> 
                 <div class="card-header text-center text-light bg-info">
@@ -141,14 +143,14 @@ include 'includes/connector.php';
         </div>
         </div>
         <?php
-        if(isset($_GET['ID_DAFTAR'])){
-            $id_daftar = $_GET['ID_DAFTAR'];
+        if(isset($_GET['detail'])){
+            $id_daftar = $_POST['ID_DAFTAR'];
+            $id_rekening = $_GET['ID_BANK'];
         }
-        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.TOTAL_BAYAR, rayon.NAMA_RAYON,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.TGL_DAFTAR FROM rayon,jenis_lomba,user,daftar
-        WHERE  rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA");
+        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.TOTAL_BAYAR,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.TGL_DAFTAR FROM jenis_lomba,user,daftar
+        WHERE daftar.ID_DAFTAR='$id_daftar' AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA");
                     
                       while($data_rekening = mysqli_fetch_assoc($result)){
-                        $id_daftar = $data_rekening['ID_DAFTAR'];
                         $total_bayar = $data_rekening['TOTAL_BAYAR'];
                         $nama_user = $data_rekening['NAMA_USER'];
                         $jenis_lomba = $data_rekening['NAMA_LOMBA'];
@@ -189,11 +191,23 @@ include 'includes/connector.php';
                     <span class="input-group-text">Total Bayar : <?=$total_bayar?> </span>
                 </div>
             </div>
-            <br>
-            <hr>
-            <br>
-
-           <!-- <div class="form-group row">
+           <!-- <p class="pt-3 font-m-semi">Pilih Bank :</p>
+                    <div id="select_bank" class="">
+                   
+                        $i = 1;
+                        $result = mysqli_query($con, "select * from bank");
+                            while($data_rekening = mysqli_fetch_assoc($result)){
+                                $id_bank = $data_rekening['ID_BANK'];
+                                $nama_rekening = $data_rekening['NAMA_REKENING'];
+                                $nomer_rekening = $data_rekening['NOMER_REKENING'];
+                                echo '<div class="custom-control custom-radio custom-control-inline mb-3 pl-5">
+                                <input type="radio" aria-describedby="'.$nomer_rekening.'" id="pilihbank'.$i.'" name="pilihbank" value="'.$id_rekening.'" class="custom-control-input" required>
+                                <label class="custom-control-label" for="pilihbank'.$i.'">'.$nama_rekening.'</label>
+                                </div>';
+                                $i+=1;
+                            }   
+                    ?>-->
+            <div class="form-group row">
             <label class="control-label"><small>Pilih Bank : </small></label>
                         <select name="id_rekening" class="form-control">
                             <option value="">--pilih bank untuk pembayaran anda--</option>
@@ -201,19 +215,21 @@ include 'includes/connector.php';
                             <option value="001">BNI</option>
                             <option value="003">MANDIRI</option>
                         </select>
-            </div>-->
+            </div>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Bayar</button>
+        <input type="submit"    name="bayar" value="Bayar" class="btn btn-primary font-m-med">
         </div>
     </div>
   </div>
+  </form>
   
 </div>
 
 </body>
 </html>
+
 
 <!-- <a href="tambah_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Lihat Detail</a> -->

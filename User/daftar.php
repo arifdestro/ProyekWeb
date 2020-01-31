@@ -418,26 +418,17 @@ include 'includes/connector.php';
                                     <?php
                                     $result = mysqli_query(
                                         $koneksi,
-                                        "SELECT 
-                            daftar.ID_DAFTAR, daftar.TGL_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, daftar.JUMLAH_SISWA,
-                            jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
-                            user.ID_USER, user.NAMA_USER,
-                            rayon.ID_RAYON,
-                            admin.ID_ADMIN, admin.NAMA_ADMIN,
-                            sekolah.NPSN, sekolah.NAMA_SEKOLAH
-
-                            FROM daftar, jenis_lomba, rayon, admin, user, sekolah
-
-                            WHERE
-                            daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
-                            AND daftar.ID_RAYON = rayon.ID_RAYON
-                            AND daftar.ID_ADMIN = admin.ID_ADMIN
-                            AND daftar.ID_USER = user.ID_USER                            
-                            AND daftar.NPSN = sekolah.NPSN
-                            -- AND user.ID_USER=$ID_USER
-                            "
-                                    );
-
+                                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, daftar.JUMLAH_SISWA,jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,user.ID_USER, user.NAMA_USER,
+                                        rayon.ID_RAYON,admin.ID_ADMIN, admin.NAMA_ADMIN,sekolah.NPSN, sekolah.NAMA_SEKOLAH
+                                        FROM daftar, jenis_lomba, rayon, admin, user, sekolah
+                                        WHERE
+                                        daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
+                                        AND daftar.ID_RAYON = rayon.ID_RAYON
+                                        AND daftar.ID_ADMIN = admin.ID_ADMIN
+                                        AND daftar.ID_USER = user.ID_USER                            
+                                        AND daftar.NPSN = sekolah.NPSN
+                            
+                            ");
                                     if (mysqli_num_rows($result) > 0) {
                                         //membuat variabel $no untuk menyimpan nomor urut
                                         $no = 1;
