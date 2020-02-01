@@ -72,7 +72,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                             <div class="col-sm-4">
                                 <div class="form-group">
                                 <label for="Rayon">Pilih Rayon</label>
-                                    <select name="ID_RAYON" class="form-control">
+                                    <select required name="ID_RAYON" class="form-control">
                                         <option  value="">--pilih regional anda--</option>
                                         <option  value="R0001">Jember</option>
                                         <option  value="R0002">Banyuwangi</option>
@@ -87,7 +87,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                             <div class="col-sm-4">
                                 <div class="form-group">
                                 <label for="Jenis Lomba">Pilih Jenis Lomba</label>
-                                    <select name="ID_JENIS_LOMBA" class="form-control">
+                                    <select required name="ID_JENIS_LOMBA" class="form-control">
                                         <option value="">--pilih lomba yang ingin anda ikuti--</option>
                                         <option value="J0001">Olimpiade Mipa</option>
                                         <option value="J0002">Science Product</option>
@@ -98,23 +98,23 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
                         <div class="group">
                             <label>NPSN</label>
-                            <input type="text" class="form-control disabled" id="NPSN" name="NPSN" >
+                            <input required type="text" class="form-control disabled" id="NPSN" name="NPSN" >
                             <button class="mt-2" type="button" id="btn-search">Cari</button>
                         </div>
 
                         <div class="form-group">
                             <label  for="Nama-sekolah" class="font-m-semi">Nama Sekolah</label>
-                            <input readonly autocomplete type="text" class="form-control " id="NAMA_SEKOLAH" name="NAMA_SEKOLAH">
+                            <input required readonly autocomplete type="text" class="form-control " id="NAMA_SEKOLAH" name="NAMA_SEKOLAH">
                         </div>
                         
                         <div class="form-group">
                             <label>Surat Rekom</label>
-                            <input type="file" class="form-control-file border" name="SURAT_REKOM" accept=".pdf, .doc, .docx">
+                            <input required  type="file" class="form-control-file border" name="SURAT_REKOM" accept=".pdf, .doc, .docx">
                         </div>
 
                         <div class="form-group">
                             <label>File Abstrak</label>
-                            <input type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
+                            <input required  type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
                         </div>
 
                         <br><hr><br>
@@ -239,35 +239,35 @@ if (isset($_SESSION['USER_LOGIN'])) {
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">NISN</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="NISN" class="form-control" required>
+                                    <input required type="text" name="NISN" class="form-control" required>
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Siswa</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="NAMA_SISWA" class="form-control" required>
+                                    <input required type="text" name="NAMA_SISWA" class="form-control" required>
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="TEMPAT_LAHIR" class="form-control" required>
+                                    <input required type="text" name="TEMPAT_LAHIR" class="form-control" required>
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-10">
-                                    <input type="date" name="TANGGAL_LAHIR" class="form-control" required>
+                                    <input required type="date" name="TANGGAL_LAHIR" class="form-control" required>
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="ALAMAT" class="form-control" required>
+                                    <input required type="text" name="ALAMAT" class="form-control" required>
                                 </div>
                         </div>
 
@@ -279,11 +279,11 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
                         <div class="form-group">
                                 <label for="NPSN">Foto Siswa</label>
-                                <input type="file" class="form-control-file border" accept=".jpg, .png, .jpeg" name="FOTO" >
+                                <input required type="file" class="form-control-file border" accept=".jpg, .png, .jpeg" name="FOTO" >
                         </div>
 
                         <div class="from-group row" float="right">
-                            <a href="#" class="btn btn-secondary" float="right">Kembali</a>
+                            <a href="myModal" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                             <hr>
                             <button type="submit" class="btn btn-primary" name="submit_siswa" float="right"> Simpan</button>
                         </div>
@@ -319,7 +319,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
         $koneksi,
         "SELECT 
         daftar.ID_DAFTAR, daftar.TGL_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, daftar.JUMLAH_SISWA,
-        jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
+        jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA, jenis_lomba.BIAYA,
         user.ID_USER, user.NAMA_USER,
         rayon.ID_RAYON, rayon.NAMA_RAYON,
         admin.ID_ADMIN, admin.NAMA_ADMIN,
@@ -340,6 +340,11 @@ if (isset($_SESSION['USER_LOGIN'])) {
         $no = 1;
         //melakukan perulangan while dengan dari dari query $sql
         while($for_detail = mysqli_fetch_assoc($result_for_detail)){
+            $ID_DAFTAR_DET=$for_detail['ID_DAFTAR'];
+            $result_row_siswa_det = mysqli_query($koneksi,"SELECT * FROM detail_daftar WHERE ID_DAFTAR='$ID_DAFTAR_DET'");
+            $JUMLAH_SISWA_DET=mysqli_num_rows($result_row_siswa_det);
+            $BIAYA_DET=$for_detail['BIAYA'];
+            $TOTAL_BAYAR_DET=$JUMLAH_SISWA_DET*$BIAYA_DET;
     ?>
             <div class="modal fade" id="d<?=$for_detail['ID_DAFTAR']?>">
                 <div class="modal-dialog modal-lg">
@@ -463,9 +468,9 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     <div class="modal-footer">
                     <h5 class="m-2">Dengan ini, saya menyatakan semua data yang saya masukan adalah benar adanya, serta siap untuk mengikuti tahap pembayaran.</h5>
                         <div class="from-group row" float="right">
-                            <a href="#" class="btn btn-secondary" float="right">Kembali</a>
+                            <a href="myModal" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                             <hr>
-                            <button type="submit" class="btn btn-primary" name="signup_submit" float="right"> Checkout</button>
+                            <a href="query_checkout.php?ID_DAFTAR=<?=$ID_DAFTAR_DET?>&TOTAL_BAYAR=<?=$TOTAL_BAYAR_DET?>" class="btn btn-secondary" >CheckOut</a>
                         </div>
                     </div>
                     
@@ -499,7 +504,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                             $koneksi,
                             "SELECT 
                             daftar.ID_DAFTAR, daftar.TGL_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, daftar.JUMLAH_SISWA,
-                            jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
+                            jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA, jenis_lomba.BIAYA,
                             user.ID_USER, user.NAMA_USER,
                             rayon.ID_RAYON,
                             admin.ID_ADMIN, admin.NAMA_ADMIN,
@@ -524,6 +529,9 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                 $ID_DAFTAR=$data['ID_DAFTAR'];
                                 $result_row_siswa = mysqli_query($koneksi,"SELECT * FROM detail_daftar WHERE ID_DAFTAR='$ID_DAFTAR'");
                                 $JUMLAH_SISWA=mysqli_num_rows($result_row_siswa);
+                                $BIAYA=$data['BIAYA'];
+                                $TOTAL_BAYAR=$JUMLAH_SISWA*$BIAYA;
+
                                 //menampilkan data perulangan
                                 echo '
                                 <tr>
@@ -532,6 +540,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                     <td>'.$data['TGL_DAFTAR'].'</td>
                                     <td>'.$data['NAMA_LOMBA'].'</td>
                                     <td>'.$JUMLAH_SISWA.'</td>
+                                    <td>'.$TOTAL_BAYAR.'</td>
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#'.$data['ID_DAFTAR'].'">Tambah Siswa</button>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#d'.$data['ID_DAFTAR'].'">Lihat Detail</button>

@@ -35,7 +35,7 @@ if(isset($_POST['signup_submit'])){
         
         $STATUS_REKOM= 0;
         $STATUS_FILE=0;
-        $STATUS_BAYAR= 0;
+        $STATUS_BAYAR= 'Belum Bayar';
         $TOTAL_BAYAR=0;
         $JUMLAH_SISWA=0;
 
@@ -90,7 +90,7 @@ if(isset($_POST['signup_submit'])){
         
         $STATUS_REKOM= 0;
         $STATUS_FILE=0;
-        $STATUS_BAYAR= 0;
+        $STATUS_BAYAR= 'Belum Bayar';
         $TOTAL_BAYAR=0;
         $JUMLAH_SISWA=0;
 
@@ -122,6 +122,7 @@ if(isset($_POST['signup_submit'])){
             
             if($query) {
                 echo '<script>alert("Berhasil menambahkan data."); document.location="daftar.php";</script>';
+                
             }else{
                 echo '<script>alert("Gagal menambahkan data."); document.location="daftar.php";</script>';
             }

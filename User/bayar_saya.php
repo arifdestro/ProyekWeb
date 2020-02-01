@@ -1,5 +1,11 @@
 <?php
+session_start();
 include 'includes/connector.php';
+
+if (isset($_SESSION['USER_LOGIN'])) {
+    $NAMA_USER=$_SESSION['NAMA_USER'];
+    $ID_USER=$_SESSION['ID_USER'];
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +68,7 @@ include 'includes/connector.php';
                     
                             }
                             $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.NPSN, rayon.NAMA_RAYON,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.STATUS_BAYAR FROM sekolah,rayon,jenis_lomba,user,daftar
-                            WHERE rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN");
+                            WHERE daftar.ID_USER='$ID_USER' AND daftar.STATUS_BAYAR='Belum Bayar' AND rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN");
                             
     
                         if(mysqli_num_rows($result) > 0){
@@ -115,6 +121,9 @@ include 'includes/connector.php';
 </body>
 </html>
 
-
+<?php } else {
+        require 'login_user.php';
+    }
+?>
 
 <!-- <a href="tambah_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Lihat Detail</a> -->
