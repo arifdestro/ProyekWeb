@@ -4,7 +4,6 @@ include 'includes/connector.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -17,6 +16,7 @@ include 'includes/connector.php';
       
         <!-- Modal Header -->
         <form action="bayar_query.php" method="post">
+        <form action="pesan_bayar.php" method="post">
         <div class="container container-fluid-md">
         <div class="row justify-content-center mt-4">
         <div class="col-lg-9 pt-4">
@@ -110,7 +110,7 @@ include 'includes/connector.php';
     </div>
   </div>
   </form>
-  
+  </form>
 </div>
 </div>
 

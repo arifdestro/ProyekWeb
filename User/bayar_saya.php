@@ -28,7 +28,7 @@ include 'includes/connector.php';
 
 </head>
 <body>
-    <form action="konfirmasi.php" method="post">
+    <form action="konfirmasi_bayar.php" method="post">
     <form action="detail_bayar.php" method="post">
     <div class="container container-fluid-lg">
     <div class="row justify-content-center">
