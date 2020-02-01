@@ -1,6 +1,7 @@
 <?php
 
 include 'includes/connector.php';
+include 'includes/fpdf.php';
 session_start();
 if (isset($_GET['ID_DAFTAR']))
 {
@@ -11,66 +12,23 @@ if (isset($_GET['ID_DAFTAR']))
 
 <html>
     <head>
+	<link rel="stylesheet" href="style.css">
         <title>Kartu Peserta</title>
-        <script language="javascript">
-        function printpage()
-            {
-                window.print();
-            }
-        </script>
+        <script>
+		window.print();
+	</script>
     </head>
-   <style>
-   #card{
-	   float:left;
-	   width:360px;
-	   height:450px;
-	   margin:5px;
-	   border:1px solid black;
-	   background-image: url("images/id.jpg");
-	   background-repeat: no-repeat;
-	   background-size: 360px 230px;
-	   -webkit-print-color-adjust: exact;
-   }
-   #c_left{
-	   margin-bottom:65px;
-	   margin-top:10px;
-	   margin-left: 150px;
-	   float:center;
-	   width:80px;
-	   height:120px;
-	   border:1px solid red;
-
-	   
-   }
-   #c_box{
-	  width:80px; 
-	  height:20px;
-	  padding:5px;
-	  border:1px solid green;
-
-   }
-  #c_right{
-	   
-	   /* margin-right:120px; */
-	   margin-bottom : 50px;
-	   width:220px;
-	   height:200px;
-	   border:1px solid yellow;
-
-   }
-   
-   </style>
-   <?php
-
-       $i=0;
+    <?php
+	    $i=0;
 		$get_peserta="SELECT 
-        siswa.NISN, siswa.NAMA_SISWA, siswa.TANGGAL_LAHIR, siswa.JENIS_KELAMIN, siswa.ALAMAT, siswa.FOTO, sekolah.NAMA_SEKOLAH
-        FROM siswa, daftar, detail_daftar, sekolah
+        siswa.NISN, siswa.NAMA_SISWA, siswa.TANGGAL_LAHIR, siswa.JENIS_KELAMIN, siswa.ALAMAT, siswa.FOTO, sekolah.NAMA_SEKOLAH, jenis_lomba.NAMA_LOMBA
+        FROM siswa, daftar, detail_daftar, sekolah, jenis_lomba
         WHERE
         detail_daftar.NISN= siswa.NISN
         AND daftar.NPSN= sekolah.NPSN
         AND detail_daftar.ID_DAFTAR= daftar.ID_DAFTAR
-		AND daftar.ID_DAFTAR = '$ID_DAFTAR'";
+		AND daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
+		AND daftar.ID_DAFTAR='$ID_DAFTAR'";
 		
 		$run_peserta=mysqli_query($koneksi, $get_peserta);
 		
@@ -84,6 +42,7 @@ if (isset($_GET['ID_DAFTAR']))
 			$jk = $row_peserta['JENIS_KELAMIN'];
 			$almt = $row_peserta['ALAMAT'];
 			$sklh = $row_peserta['NAMA_SEKOLAH'];
+			$lomba = $row_peserta['NAMA_LOMBA'];
 			$i++;
 					
 		?>
@@ -91,9 +50,11 @@ if (isset($_GET['ID_DAFTAR']))
    
    
      <body>
-	 <h3>HMPS VEKTOR TADRIS IPA IAIN JEMBER</h3><br>
-     <h3>Peserta Olimpiade MIPA 2019</h3>
 	 <div id="card">
+	 <div id="h3">
+	  <h3>Kartu Peserta Lomba</h3><br>
+	  <h3>HMPS Tadris IPA IAIN Jember</h3>
+	 </div>
 	  <div id="c_left">
 	  <img src="student_images/<?php echo $img; ?>"width="80px"height="100px"style="border:1px solid black;"><br>
 	  </div>
@@ -116,6 +77,9 @@ if (isset($_GET['ID_DAFTAR']))
 	  </tr>
       <tr>
 	  <td><b>Nama Sekolah</b></td><td>: <?php echo $sklh; ?></td>
+	  </tr>
+	  <tr>
+	  <td><b>Lomba yang diikuti</b></td><td>: <?php echo $lomba; ?></td>
 	  </tr>
 	  </table>
 	  

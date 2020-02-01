@@ -25,8 +25,7 @@ if (isset($_GET['ID_DAFTAR']))
             <table class="table table-bordered" id="dataTable" border="1" style="width: 100%" cellspacing="0">
         <thead class="thead-dark">
 		<tr>
-        <th width="1%">No.</th>
-		<th>ID Daftar</th>
+        <th>ID Daftar</th>
 		<th>ID Bayar</th>
         <th>Status Pembayaran</th>
 		<th>Tanggal Bayar</th>
@@ -35,18 +34,16 @@ if (isset($_GET['ID_DAFTAR']))
 		<th>INFO</th>
 		</tr>
 		<?php 
-		$no = 1;
 		$sql = mysqli_query($koneksi,"select daftar.ID_DAFTAR, bayar.ID_BAYAR, daftar.STATUS_BAYAR, bayar.TGL_BAYAR, siswa.NISN, siswa.NAMA_SISWA
         FROM daftar, bayar, detail_daftar, siswa
         WHERE
 		daftar.ID_DAFTAR = bayar.ID_DAFTAR
 		AND daftar.ID_DAFTAR= detail_daftar.ID_DAFTAR
 		AND siswa.NISN = detail_daftar.NISN
-		AND daftar.ID_DAFTAR=$ID_DAFTAR");
+		AND daftar.ID_DAFTAR='$ID_DAFTAR'");
 		while($data = mysqli_fetch_array($sql)){
 		?>
 		<tr>
-        <td><?php echo $no++; ?></td>
         <td><?php echo $data['ID_DAFTAR'];?></td>
         <td><?php echo $data['ID_BAYAR'];?></td>
 		<td><?php echo $data['STATUS_BAYAR'];?></td>
