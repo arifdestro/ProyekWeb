@@ -1,13 +1,3 @@
-<?php
-session_start();
-include 'includes/connector.php';
-
-if (isset($_SESSION['USER_LOGIN'])) {
-    $NAMA_USER=$_SESSION['NAMA_USER'];
-    $ID_USER=$_SESSION['ID_USER'];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,8 +68,3 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
 </body>
 </html>
-
-<?php } else {
-        require 'login_user.php';
-    }
-?>
