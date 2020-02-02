@@ -96,6 +96,8 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                         echo '<a href="detail_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '"><button type="button"  id="INFO_REK " name="INFO_REK" class="btn btn-primary" onclick="add_project()" >Lihat Detail</button></a>';
                                     }elseif ($status == "Konfirmasi Bayar") {
                                         echo '<a href="konfirmasi_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '"><button type="button" class="btn btn-warning" onclick="return confirm(\'Apakah Anda sudah melakukan pembayaran di Bank?\')">Konfirmasi Pembayaran</button></a>';
+                                    }elseif ($status == "Proses Verfikasi") {
+                                        echo 'Pembayaran Anda Dalam Proses Verfikasi';
                                     }elseif ($status == "Sudah Bayar") {
                                         echo 'Pembayaran Anda Telah Di Verifikasi';
                                     }

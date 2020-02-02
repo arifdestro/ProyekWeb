@@ -171,7 +171,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        <a href="bayar_saya.php"><button type="button" class="btn btn-primary ml-2">Kembali</button></a>
+        <a href="bayar_saya.php"><button type="button" class="btn btn-secondary ml-2">Kembali</button></a>
         <input type="submit"    id="bayar" name="bayar" value="Bayar" class="btn btn-primary font-m-med">
         </div>
     </div>

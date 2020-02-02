@@ -64,6 +64,64 @@ include 'includes/connector.php';
                     <span class="input-group-text">Total Bayar : <?=$total_bayar?> </span>
                 </div>
             </div>
+              <!-- Tabel Siswa -->
+<div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <?php
+                $ID_DAFTAR=$_GET['ID_DAFTAR'];
+                ?>
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                            <th>NISN</th>
+                            <th>Nama Siswa</th>          
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                        $result_for_tabel = mysqli_query(
+                            $koneksi,
+                            "SELECT siswa.NISN, siswa.NAMA_SISWA,
+                            daftar.ID_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, 
+                            user.ID_USER, 
+                            detail_daftar.ID_DAFTAR, detail_daftar.NISN
+                            FROM siswa, daftar, user, detail_daftar 
+                            WHERE detail_daftar.NISN=siswa.NISN 
+                            AND detail_daftar.ID_DAFTAR=daftar.ID_DAFTAR 
+                            AND daftar.ID_USER=user.ID_USER 
+                            AND daftar.ID_DAFTAR='$ID_DAFTAR'
+                            ");
+
+                        if(mysqli_num_rows($result_for_tabel) > 0){
+                            //membuat variabel $no untuk menyimpan nomor urut
+                            $no = 1;
+                            //melakukan perulangan while dengan dari dari query $sql
+                            while($data = mysqli_fetch_assoc($result_for_tabel)){
+                                
+                                //menampilkan data perulangan
+                                echo '
+                                <tr>
+                                    <td>'.$no.'</td>
+                                    <td>'.$data['NISN'].'</td>
+                                    <td>'.$data['NAMA_SISWA'].'</td>
+                                </tr>
+                                ';
+                                $no++;
+                            }
+                        //jika query menghasilkan nilai 0
+                        }else{
+                            echo '
+                            <tr>
+                                <td colspan="6"><b>Tidak ada data.</b></td>
+                            </tr>
+                            ';
+                        }
+                        ?>    
+                    <body>
+                </table>
+            </div>
             <br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Tanggal Bayar</label>
@@ -77,10 +135,11 @@ include 'includes/connector.php';
                 <input required type="file" name="file" class="form-control-file border" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
                 <label for="uploadfile">Silahkan Transfer dan Upload bukti pembayaran Anda </label>
             </div> 
+
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        <a href="bayar_saya.php"><button type="button" class="btn btn-primary ml-2">Kembali</button></a>
+        <a href="bayar_saya.php"><button type="button" class="btn btn-secondary ml-2">Kembali</button></a>
         <input type="submit" name="konfir_pembayaran" class="btn btn-primary" value="Selesai">
         </div>
        
