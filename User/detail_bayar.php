@@ -37,7 +37,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
         if(isset($_GET['ID_DAFTAR'])){
             $id_daftar = $_GET['ID_DAFTAR'];
         }
-        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.TOTAL_BAYAR,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.TGL_DAFTAR FROM jenis_lomba,user,daftar
+        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.TOTAL_BAYAR,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.TGL_DAFTAR,daftar.STATUS_BAYAR FROM jenis_lomba,user,daftar
         WHERE daftar.ID_DAFTAR='$id_daftar' AND daftar.ID_USER = user.ID_USER AND  daftar.ID_JENIS_LOMBA =jenis_lomba.ID_JENIS_LOMBA");
                     
                       while($data_rekening = mysqli_fetch_assoc($result)){
@@ -46,12 +46,14 @@ if (isset($_SESSION['USER_LOGIN'])) {
                         $nama_user = $data_rekening['NAMA_USER'];
                         $jenis_lomba = $data_rekening['NAMA_LOMBA'];
                         $tanggal_daftar = $data_rekening['TGL_DAFTAR'];
+                        $status_bayar = $data_rekening['STATUS_BAYAR'];
                         ?>
                          <?php }?>
         <!-- Modal body -->
         <div class="modal-body">
         <div class="card-body p-4">
                 <form action=".php" method="post" enctype="multipart/form-data">
+                <input type="text" class="form-control" name="STATUS_BAYAR" value="<?= $status_bayar ?>" hidden>
                 <input type="text" class="form-control" name="ID_DAFTAR" value="<?= $id_daftar ?>" hidden>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -82,6 +84,64 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     <span class="input-group-text">Total Bayar : <?=$total_bayar?> </span>
                 </div>
             </div>
+<!-- Tabel Siswa -->
+<div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <?php
+                $ID_DAFTAR=$_GET['ID_DAFTAR'];
+                ?>
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                            <th>NISN</th>
+                            <th>Nama Siswa</th>          
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                        $result_for_tabel = mysqli_query(
+                            $koneksi,
+                            "SELECT siswa.NISN, siswa.NAMA_SISWA,
+                            daftar.ID_DAFTAR, daftar.STATUS_REKOM, daftar.STATUS_FILE, daftar.STATUS_BAYAR, 
+                            user.ID_USER, 
+                            detail_daftar.ID_DAFTAR, detail_daftar.NISN
+                            FROM siswa, daftar, user, detail_daftar 
+                            WHERE detail_daftar.NISN=siswa.NISN 
+                            AND detail_daftar.ID_DAFTAR=daftar.ID_DAFTAR 
+                            AND daftar.ID_USER=user.ID_USER 
+                            AND daftar.ID_DAFTAR='$ID_DAFTAR'
+                            ");
+
+                        if(mysqli_num_rows($result_for_tabel) > 0){
+                            //membuat variabel $no untuk menyimpan nomor urut
+                            $no = 1;
+                            //melakukan perulangan while dengan dari dari query $sql
+                            while($data = mysqli_fetch_assoc($result_for_tabel)){
+                                
+                                //menampilkan data perulangan
+                                echo '
+                                <tr>
+                                    <td>'.$no.'</td>
+                                    <td>'.$data['NISN'].'</td>
+                                    <td>'.$data['NAMA_SISWA'].'</td>
+                                </tr>
+                                ';
+                                $no++;
+                            }
+                        //jika query menghasilkan nilai 0
+                        }else{
+                            echo '
+                            <tr>
+                                <td colspan="6"><b>Tidak ada data.</b></td>
+                            </tr>
+                            ';
+                        }
+                        ?>    
+                    <body>
+                </table>
+            </div>
            <!-- <p class="pt-3 font-m-semi">Pilih Bank :</p>
                     <div id="select_bank" class="">
                    
@@ -100,7 +160,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     ?>-->
             <div class="form-group row">
             <label class="control-label"><small>Pilih Bank : </small></label>
-                        <select name="id_rekening" class="form-control">
+                        <select required name="id_rekening" class="form-control">
                             <option value="">--pilih bank untuk pembayaran anda--</option>
                             <option value="002">BRI</option>
                             <option value="001">BNI</option>
@@ -111,7 +171,8 @@ if (isset($_SESSION['USER_LOGIN'])) {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        <input type="submit"    name="bayar" value="Bayar" class="btn btn-primary font-m-med">
+        <a href="bayar_saya.php"><button type="button" class="btn btn-primary ml-2">Kembali</button></a>
+        <input type="submit"    id="bayar" name="bayar" value="Bayar" class="btn btn-primary font-m-med">
         </div>
     </div>
   </div>

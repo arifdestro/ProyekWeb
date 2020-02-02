@@ -5,14 +5,16 @@ include 'includes/connector.php';
 if (isset($_POST['bayar'])) {
     $id_daftar = $_POST['ID_DAFTAR'];
     $id_rekening = $_POST['id_rekening'];
-
+  
   }
+ 
   $result = mysqli_query($koneksi, "SELECT * FROM bank WHERE ID_BANK = '$id_rekening'");
   while($data_rekening = mysqli_fetch_assoc($result)){
   $nama_rekening = $data_rekening['NAMA_REK'];
   $nama_bank = $data_rekening['NAMA_BANK'];
   $nomer_rekening = $data_rekening['NO_REK'];
   }
+  
 
 
     $data = mysqli_query($koneksi, "SELECT ID_BAYAR from bayar ORDER BY ID_BAYAR DESC LIMIT 1");
@@ -28,10 +30,10 @@ if (isset($_POST['bayar'])) {
           $id_bayar= 'BYR000001';
         }
 
+     mysqli_query($koneksi, "INSERT INTO bayar VALUES('$id_bayar','$id_daftar','$id_rekening','BELUM ADA','BELUM ADA')");
+       
+  ?>
 
-    $query = mysqli_query($koneksi, "INSERT INTO bayar VALUES('$id_bayar','$id_daftar','$id_rekening','BELUM ADA','BELUM ADA')");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +50,7 @@ if (isset($_POST['bayar'])) {
 <div class="container container-fluid-md">
     <div class="row justify-content-center mt-4">
         <div class="col-lg-9 pt-4">
-   <!-- Modal Header -->
+   <!-- Modal Header-->
         <div class="modal-header">
             <div class="card p shadow"> 
                 <div class="card-header text-center text-light bg-info">
@@ -72,14 +74,17 @@ if (isset($_POST['bayar'])) {
                 </div>     
                 </div>              
         
-        <!-- Modal footer -->
+        <!-- Modal footer-->
         <div class="modal-footer">
-        <a href="bayar_saya.php" class="btn btn-primary">Selesai</a>
+       <a href="bayar_saya.php?"><button type="button"  id="selesai_query" name="selesai_query" class="btn btn-primary">Selesai</button></a>';
         </div>
+        <?php
+  if (isset($_POST['bayar'])) {
+   mysqli_query($koneksi, "UPDATE daftar SET STATUS_BAYAR ='Konfirmasi Bayar' WHERE ID_DAFTAR = '$id_daftar'");
+  
+  }?>
     </div>
   </div>
-  
 </div>
-
 </body>
 </html>

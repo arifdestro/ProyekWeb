@@ -68,7 +68,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     
                             }
                             $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.NPSN, rayon.NAMA_RAYON,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.STATUS_BAYAR FROM sekolah,rayon,jenis_lomba,user,daftar
-                            WHERE daftar.ID_USER='$ID_USER' AND daftar.STATUS_BAYAR='Belum Bayar' AND rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN");
+                            WHERE daftar.ID_USER='$ID_USER' AND rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN");
                             
     
                         if(mysqli_num_rows($result) > 0){
@@ -80,7 +80,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                 $id_daftar = $data['ID_DAFTAR'];
                                 $rayon = $data['NAMA_RAYON'];
                                 $jenis_lomba = $data['NAMA_LOMBA'];
-                                $status = $data['STATUS_BAYAR'];
+                                $status = $data['STATUS_BAYAR']; 
 
                                 echo '
                                 <tr>
@@ -89,14 +89,24 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                     <td>'.$rayon.'</td>
                                     <td>'.$jenis_lomba.'</td>
                                     <td>'.$status.'</td>
-                                    <td>
-                                    
-                                    <a href="detail_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '" class="btn btn-primary">Lihat Detail</a>
-                                    <a href="konfirmasi_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '" class="btn btn-primary" onclick="return confirm(\'Apakah Anda sudah melakukan pembayaran di Bank?\')">Konfirmasi Pembayaran</a>
+                                    <td>  
+                                    '?>
+                                    <?php
+                                    if($status == "Belum Bayar") {
+                                        echo '<a href="detail_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '"><button type="button"  id="INFO_REK " name="INFO_REK" class="btn btn-primary" onclick="add_project()" >Lihat Detail</button></a>';
+                                    }elseif ($status == "Konfirmasi Bayar") {
+                                        echo '<a href="konfirmasi_bayar.php?ID_DAFTAR=' . $data['ID_DAFTAR'] . '"><button type="button" class="btn btn-warning" onclick="return confirm(\'Apakah Anda sudah melakukan pembayaran di Bank?\')">Konfirmasi Pembayaran</button></a>';
+                                    }elseif ($status == "Sudah Bayar") {
+                                        echo 'Pembayaran Anda Telah Di Verifikasi';
+                                    }
+                                    ;
+                                    ?>
                                     </td>
                                 </tr>
-                                ';
+                                <?php
+
                                 $no++;
+                                
                             }
                         //jika query menghasilkan nilai 0
                         }else{
@@ -120,10 +130,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
 </div>
 </body>
 </html>
-
 <?php } else {
         require 'login_user.php';
     }
 ?>
-
-<!-- <a href="tambah_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Lihat Detail</a> -->

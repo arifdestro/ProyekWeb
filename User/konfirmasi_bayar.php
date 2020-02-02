@@ -33,7 +33,8 @@ include 'includes/connector.php';
         if(isset($_GET['ID_DAFTAR'])){
             $id_daftar = $_GET['ID_DAFTAR'];
         }
-        $result = mysqli_query($koneksi, "SELECT * FROM daftar WHERE ID_DAFTAR = '$id_daftar'");
+        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.TOTAL_BAYAR,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.TGL_DAFTAR FROM jenis_lomba,user,daftar
+        WHERE daftar.ID_DAFTAR='$id_daftar' AND daftar.ID_USER = user.ID_USER AND  daftar.ID_JENIS_LOMBA =jenis_lomba.ID_JENIS_LOMBA");
                     
                       while($data_rekening = mysqli_fetch_assoc($result)){
                         $id_daftar = $data_rekening['ID_DAFTAR'];
@@ -72,16 +73,17 @@ include 'includes/connector.php';
                 </div>     
                 </div>              
             <div class="custom-file mb-5 ">
-
-                <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
-                <label class="custom-file-label" for="inputGroupFile01">Upload Bukti Pembayaran</label>
+           
+                <input required type="file" name="file" class="form-control-file border" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
                 <label for="uploadfile">Silahkan Transfer dan Upload bukti pembayaran Anda </label>
             </div> 
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        <input type="submit" name="konfir_pembayaran" class="btn btn-primary font-m-med mb-5 mt-4 w-25" value="Selesai">
+        <a href="bayar_saya.php"><button type="button" class="btn btn-primary ml-2">Kembali</button></a>
+        <input type="submit" name="konfir_pembayaran" class="btn btn-primary" value="Selesai">
         </div>
+       
     </div>
   </div>
   

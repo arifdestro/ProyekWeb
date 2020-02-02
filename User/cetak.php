@@ -49,7 +49,6 @@
                   <td>
                   <a href="cetak_nota.php?ID_DAFTAR='.$data['ID_DAFTAR'].'"><button type="button" class="btn btn-primary">Cetak Nota</button></a>
                   <a href="cetak_kp.php?ID_DAFTAR='.$data['ID_DAFTAR'].'"><button type="button" class="btn btn-primary">Cetak Kartu Peserta</button></a>
-                    
                   </td>
               </tr>
               ';
