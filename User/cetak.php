@@ -13,25 +13,30 @@
 <body>
 
 <div class="container">
+<div class="card-header text-center text-light bg-info">
   <h2 text-align="center">CETAK</h2>
+</div>  
   <table class="table table-bordered">
     <thead>
       <tr>
       <th>No</th>
-        <th>ID Daftar</th>
-        <th>ID Bayar</th>
-        <th>Status Bayar</th>
-        <th>Tanggal Bayar</th>
-        <th>AKSI</th>
+      <th>NISN</th>
+      <th>Nama Siswa</th>
+      <th>Status Bayar</th>
+      <th>Tanggal Bayar</th>
+      <th>AKSI</th>
       </tr>
     </thead>
     <tbody>
     <?php
     include 'includes/connector.php';
-				$result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR, bayar.ID_BAYAR, daftar.STATUS_BAYAR, bayar.TGL_BAYAR
-          FROM daftar, bayar
+				$result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR, siswa.NISN, siswa.NAMA_SISWA, bayar.ID_BAYAR, daftar.STATUS_BAYAR, bayar.TGL_BAYAR
+          FROM daftar, bayar, detail_daftar, siswa
           WHERE
-          daftar.ID_DAFTAR = bayar.ID_DAFTAR");
+          daftar.ID_DAFTAR = bayar.ID_DAFTAR
+          AND daftar.ID_DAFTAR = detail_daftar.ID_DAFTAR
+          AND siswa.NISN = detail_daftar.NISN
+          AND daftar.STATUS_BAYAR = 'Sudah Bayar'");
 
       if(mysqli_num_rows($result) > 0){
           //membuat variabel $no untuk menyimpan nomor urut
@@ -42,13 +47,13 @@
               echo '
               <tr>
                   <td>'.$no.'</td>
-                  <td>'.$data['ID_DAFTAR'].'</td>
-                  <td>'.$data['ID_BAYAR'].'</td>
+                  <td>'.$data['NISN'].'</td>
+                  <td>'.$data['NAMA_SISWA'].'</td>
                   <td>'.$data['STATUS_BAYAR'].'</td>
                   <td>'.$data['TGL_BAYAR'].'</td>
                   <td>
-                  <a href="cetak_nota.php?ID_DAFTAR='.$data['ID_DAFTAR'].'"><button type="button" class="btn btn-primary">Cetak Nota</button></a>
-                  <a href="cetak_kp.php?ID_DAFTAR='.$data['ID_DAFTAR'].'"><button type="button" class="btn btn-primary">Cetak Kartu Peserta</button></a>
+                  <a href="cetak_nota.php?STATUS_BAYAR='.$data['STATUS_BAYAR'].'"><button type="button" class="btn btn-primary">Cetak Nota</button></a>
+                  <a href="cetak_kp.php?NISN='.$data['NISN'].'"><button type="button" class="btn btn-primary">Cetak Kartu Peserta</button></a>
                   </td>
               </tr>
               ';

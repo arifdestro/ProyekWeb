@@ -3,9 +3,9 @@
 include 'includes/connector.php';
 include 'includes/fpdf.php';
 session_start();
-if (isset($_GET['ID_DAFTAR']))
+if (isset($_GET['NISN']))
 {
-	$ID_DAFTAR=$_GET['ID_DAFTAR'];
+	$NISN=$_GET['NISN'];
 }
 
 ?>
@@ -28,7 +28,7 @@ if (isset($_GET['ID_DAFTAR']))
         AND daftar.NPSN= sekolah.NPSN
         AND detail_daftar.ID_DAFTAR= daftar.ID_DAFTAR
 		AND daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
-		AND daftar.ID_DAFTAR='$ID_DAFTAR'";
+		AND siswa.NISN='$NISN'";
 		
 		$run_peserta=mysqli_query($koneksi, $get_peserta);
 		
@@ -56,7 +56,7 @@ if (isset($_GET['ID_DAFTAR']))
 	  <h3>HMPS Tadris IPA IAIN Jember</h3>
 	 </div>
 	  <div id="c_left">
-	  <img src="student_images/<?php echo $img; ?>"width="80px"height="100px"style="border:1px solid black;"><br>
+	  <img src="pictures/register/<?php echo $img; ?>"width="80px"height="100px"style="border:1px solid black;"><br>
 	  </div>
 	  <div id="c_right">
 	  <table style="margin-top:23px;">

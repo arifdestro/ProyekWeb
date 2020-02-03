@@ -15,9 +15,9 @@
     include 'includes/connector.php';
 	include 'includes/fpdf.php';
 	session_start();
-if (isset($_GET['ID_DAFTAR']))
+if (isset($_GET['STATUS_BAYAR']))
 {
-	$ID_DAFTAR=$_GET['ID_DAFTAR'];
+	$STATUS_BAYAR=$_GET['STATUS_BAYAR= Sudah Bayar'];
 }
 	?>
  
@@ -40,7 +40,7 @@ if (isset($_GET['ID_DAFTAR']))
 		daftar.ID_DAFTAR = bayar.ID_DAFTAR
 		AND daftar.ID_DAFTAR= detail_daftar.ID_DAFTAR
 		AND siswa.NISN = detail_daftar.NISN
-		AND daftar.ID_DAFTAR='$ID_DAFTAR'");
+		AND daftar.STATUS_BAYAR='$STATUS_BAYAR= Sudah Bayar'");
 		while($data = mysqli_fetch_array($sql)){
 		?>
 		<tr>
