@@ -1,24 +1,24 @@
 <?php
-    session_start();
 
-    include 'includes/connector.php';
+session_start();
 
-    $NAMA_USER = $_POST['NAMA_USER'];
-    $PASSWORD_USER = $_POST['PASSWORD_USER'];
+include 'includes/connector.php';
 
-    $data = mysqli_query($koneksi, "SELECT * FROM user where NAMA_USER='$NAMA_USER' and PASSWORD_USER='$PASSWORD_USER'");
-    $data_user = mysqli_fetch_assoc($data);
-    $ID_USER = $data_user['ID_USER'];
-    $row = mysqli_num_rows($data);
+$username = $_POST['username-user'];
+$password = md5($_POST['password-user']);
 
-    if($row > 0){
-        $_SESSION['NAMA_USER'] = $NAMA_USER;
-        $_SESSION['USER_LOGIN'] = 'login';
-        $_SESSION['ID_USER'] = $ID_USER;
-        
-        header("location:daftar.php?pesan=loginberhasil");
-    }else{
-        header("location:daftar.php?pesan=logingagal");
-    }
+$data = mysqli_query($con, "select * from user where NAMA_USER='$username' and PASSWORD_USER='$password'");
+$data_user = mysqli_fetch_assoc($data);
+// $status_admin = $data_admin['STATUS_MITRA'];
+$id_user = $data_user['ID_USER'];
+$row = mysqli_num_rows($data);
 
-?>
+if ($row > 0) {
+    $_SESSION['username'] = $username;
+    $_SESSION['user_login'] = 'login';
+    // $_SESSION['admin_status'] = $status_admin;
+    $_SESSION['id_user'] = $id_user;
+    header("location:index.php?pesan=loginberhasil");
+} else {
+    header("location:index.php?pesan=gagal");
+}

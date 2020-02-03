@@ -1,72 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<section>
 
-<head>
+  <div class="login-bg">
+    <div class="row">
+      <div class="col-5">
+        <div class="modal fade" id="login_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-biru-tua">
+                <h5 class="modal-title text-light font-m-bold ml-3" id="LoginLabel">Login User</h5>
+                <button type="button" class="close btn bg-biru-tua" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body row justify-content-center">
+                <form class="font-m-light col-11 mt-3" action="cek_login_user.php" method="post">
+                  <div class="form-group">
+                    <label for="username-user" class="font-m-med">Username</label>
+                    <input type="text" class="form-control" id="username-user" name="username-user" aria-describedby="usernameHelp" placeholder="Enter username" required>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+                  </div>
+                  <div class="form-group">
+                    <label for="password-user" class="font-m-med">Password</label>
+                    <input type="password" class="form-control tampil-sandi" id="password-user" name="password-user" placeholder="Password" required>
+                    <small id="passwordHelp" class="form-text float-right"><a href="forgot_password.php">Lupa password?</a></small>
+                    <div class="form-group form-check float-left">
+                      <input type="checkbox" class="form-check-input" id="tampil-sandi">
+                      <label class="form-check-label" for="tampil-sandi"><small>Tampilkan Sandi</small></label>
+                    </div>
+                  </div>
 
-<title>SB Admin - Login</title>
-
-<!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-<!-- Custom styles for this template-->
-<link href="css/sb-admin.css" rel="stylesheet">
-
-</head>
-
-<body class="bg-dark">
-
-  <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login User Simba</div>
-      <div class="card-body">
-        <form action="cek_login_user.php" method="post">
-          <div class="form-group" >
-            <div class="form-label-group">
-              <input type="text" id="inputEmail" name="NAMA_USER" class="form-control" placeholder="Nama" required="required" autofocus="autofocus">
-              <label for="inputEmail">Nama User</label>
+              </div>
+              <div class="modal-footer text-center">
+                <input type="submit" class="btn btn-primary" name="login_user" value="Login">
+              </div>
             </div>
+            </form>
           </div>
-          <div class="form-group">
-            <div class="form-label-group">
-              <input type="password" id="inputPassword" name="PASSWORD_USER" class="form-control" placeholder="Password" required="required">
-              <label for="inputPassword">Password</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-
-          <div>
-          <input type="submit" class="btn btn-primary btn-block" name="LOGIN_USER" value="login">
-          </div>
-
-        </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="register.php">Register an Account</a>
-          <a class="d-block small" href="lupa_password.php">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-</body>
-
-</html>
+</section>
