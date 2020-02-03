@@ -24,6 +24,7 @@ $ID_ADMIN = $data_admin['ID_ADMIN'];
     <span>Verifikasi</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+    <a class="dropdown-item" href="verifikasi_rekom.php">Surat Rekom</a>
     <a class="dropdown-item" href="verifikasi_file.php">File Abstrak</a>
     <a class="dropdown-item" href="bayar.php"> Bayar Olimpiade</a>
     <a class="dropdown-item" href="bayar_sp.php">Bayar Sains Produk</a>

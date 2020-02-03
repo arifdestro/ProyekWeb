@@ -24,7 +24,7 @@ if(isset($_SESSION['admin_login'])){
         <div class="card-header">
         <i class="fas fa-table"></i>
         Data Bayar Sains Produk</div>
-        <div><a class="btn btn-primary" href="#" role="button">Cetak</a></div>
+        <div><a class="btn btn-primary" href="cetak_bayar_sp.php" role="button">Cetak</a></div>
         <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -43,13 +43,13 @@ if(isset($_SESSION['admin_login'])){
 
                         <?php
                         $result = mysqli_query($koneksi, 
-                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS, jenis_lomba.ID_JENIS_LOMBA, daftar.STATUS_FILE, daftar.TOTAL_BAYAR
+                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR, jenis_lomba.ID_JENIS_LOMBA, daftar.STATUS_FILE, daftar.TOTAL_BAYAR
                         FROM daftar, bayar, user, jenis_lomba
                         WHERE daftar.ID_USER = user.ID_USER
                         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
                         AND daftar.ID_JENIS_LOMBA=jenis_lomba.ID_JENIS_LOMBA
                         AND jenis_lomba.ID_JENIS_LOMBA='J0002'
-                        AND daftar.STATUS='1'
+                        AND daftar.STATUS_BAYAR='Sudah Bayar'
                         AND daftar.STATUS_FILE='1'
                         ");
 
