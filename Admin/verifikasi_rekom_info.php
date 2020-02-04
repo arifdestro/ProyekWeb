@@ -60,7 +60,7 @@ if(isset($_SESSION['admin_login'])){
                             <h6 class="d-inline">ID Daftar : </h6>
                             <label><?= $ID_DAFTAR?></label><br>
                             <h6 class="d-inline">Surat Rekom :</h6>
-                            <label><embed src="rekompdf/<?php echo $data['SURAT_REKOM']; ?>.pdf" type="application/pdf" width="100%" height="700"/></label><br>
+                            <embed src="../user/src/rekom<?php echo $data['SURAT_REKOM']; ?>.pdf" type='application/pdf' width='100%' height='700px'/><br>
                         </div>
                     </div>
                 </div>

@@ -62,7 +62,7 @@ if(isset($_SESSION['admin_login'])){
                             <h6 class="d-inline">ID Daftar : </h6>
                             <label><?= $ID_DAFTAR ?></label><br>
                             <h6 class="d-inline">File Abstrak :</h6>
-                            <label><?= $FILE_ABSTRAK?></label><br>
+                            <embed src="user/src/abstrak<?php echo $data['FILE_ABSTRAK']; ?>.pdf" type='application/pdf' width='100%' height='700px'/><br>
                         </div>
                     </div>
                 </div>
