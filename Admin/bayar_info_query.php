@@ -7,7 +7,7 @@ if (isset($_GET['ID_DAFTAR'])) {
     $ID_DAFTAR = $data_transaksi['ID_DAFTAR'];
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'update') {
-            $result = mysqli_query($koneksi, "UPDATE daftar SET daftar.STATUS='1' WHERE ID_DAFTAR='$ID_DAFTAR'");
+            $result = mysqli_query($koneksi, "UPDATE daftar SET daftar.STATUS_BAYAR='Sudah Bayar' WHERE ID_DAFTAR='$ID_DAFTAR'");
             header("location: bayar.php");
         }
     }
