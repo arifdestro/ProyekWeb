@@ -46,7 +46,7 @@ if(isset($_SESSION['admin_login'])){
             <?php
 				$result = mysqli_query(
                     $koneksi,
-                    "SELECT daftar.ID_DAFTAR, jenis_lomba.ID_JENIS_LOMBA, rayon.ID_RAYON, user.ID_USER, admin.ID_ADMIN, sekolah.NPSN, daftar.TGL_DAFTAR, daftar.SURAT_REKOM, daftar.STATUS
+                    "SELECT daftar.ID_DAFTAR, jenis_lomba.ID_JENIS_LOMBA, rayon.ID_RAYON, user.ID_USER, admin.ID_ADMIN, sekolah.NPSN, daftar.TGL_DAFTAR, daftar.SURAT_REKOM, daftar.STATUS_BAYAR
                     FROM daftar, jenis_lomba, rayon, user, admin, sekolah
                     WHERE
                     daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
@@ -73,7 +73,7 @@ if(isset($_SESSION['admin_login'])){
                             <td>'.$data['NPSN'].'</td>
                             <td>'.$data['TGL_DAFTAR'].'</td>
                             <td>'.$data['SURAT_REKOM'].'</td>
-                            <td>'.$data['STATUS'].'</td>
+                            <td>'.$data['STATUS_BAYAR'].'</td>
                             <td>
                                 <a href="hapus_daftar.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="badge badge-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Delete</a>
                             </td>

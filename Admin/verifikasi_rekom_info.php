@@ -61,6 +61,7 @@ if(isset($_SESSION['admin_login'])){
                             <label><?= $ID_DAFTAR?></label><br>
                             <h6 class="d-inline">Surat Rekom :</h6>
                             <embed src="../user/src/rekom<?php echo $data['SURAT_REKOM']; ?>.pdf" type='application/pdf' width='100%' height='700px'/><br>
+                            
                         </div>
                     </div>
                 </div>
