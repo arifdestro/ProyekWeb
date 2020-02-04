@@ -24,7 +24,7 @@ if(isset($_SESSION['admin_login'])){
             <div class="card-header">
             <i class="fas fa-table"></i>
             Peserta Olimpiade</div>
-            <div><a class="btn btn-primary" href="cetak_peserta_olim.php" role="button">Cetak</a></div>
+            <div><a class="btn btn-primary" href="cetak_peserta_olimpiade.php" role="button">Cetak</a></div>
             <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -42,7 +42,7 @@ if(isset($_SESSION['admin_login'])){
             <?php
 				$result = mysqli_query(
                     $koneksi,
-                    "SELECT daftar.ID_DAFTAR, daftar.STATUS_REKOM,
+                    "SELECT daftar.ID_DAFTAR, daftar.STATUS_BAYAR,
                     jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
                     rayon.ID_RAYON, rayon.NAMA_RAYON,
                     user.ID_USER, admin.ID_ADMIN,
@@ -59,7 +59,8 @@ if(isset($_SESSION['admin_login'])){
                     AND daftar.ID_ADMIN = admin.ID_ADMIN
                     AND daftar.NPSN = sekolah.NPSN
                     AND jenis_lomba.ID_JENIS_LOMBA='J0001'
-                    AND daftar.STATUS_REKOM='1'
+                    AND daftar.STATUS_BAYAR='Sudah Bayar'
+                    AND daftar.STATUS_REKOM='Sudah Terverifikasi'
                     ");
 
                 if(mysqli_num_rows($result) > 0){
