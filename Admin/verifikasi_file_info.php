@@ -13,6 +13,7 @@ if(isset($_SESSION['admin_login'])){
 
         $result_trs = mysqli_query($koneksi,  
         "SELECT daftar.ID_DAFTAR,
+        daftar.STATUS_REKOM,
         daftar.TGL_DAFTAR, 
         daftar.SURAT_REKOM, 
         daftar.STATUS_BAYAR, 
@@ -30,9 +31,6 @@ if(isset($_SESSION['admin_login'])){
         AND daftar.ID_USER = user.ID_USER
         AND daftar.ID_ADMIN = admin.ID_ADMIN
         AND daftar.NPSN = sekolah.NPSN
-        AND jenis_lomba.ID_JENIS_LOMBA='J0002'
-        AND daftar.STATUS_BAYAR='Belum Bayar'
-        AND daftar.STATUS_FILE='Belum Terverifikasi'
         AND daftar.ID_DAFTAR='$ID_DAFTAR'");
 
         $data_dtr = mysqli_fetch_assoc($result_trs);
@@ -60,9 +58,9 @@ if(isset($_SESSION['admin_login'])){
                             <h6 class="d-inline sm">Tgl Daftar :</h6>
                             <label><?= $TGL_DAFTAR?></label><br>
                             <h6 class="d-inline">ID Daftar : </h6>
-                            <label><?= $ID_DAFTAR ?></label><br>
-                            <h6 class="d-inline">File Abstrak :</h6>
-                            <embed src="user/src/abstrak<?php echo $data['FILE_ABSTRAK']; ?>.pdf" type='application/pdf' width='100%' height='700px'/><br>
+                            <label><?= $ID_DAFTAR?></label><br>
+                            <h6 class="d-inline">Surat Rekom :</h6>
+                            <label><?= $FILE_ABSTRAK?></label><br>
                         </div>
                     </div>
                 </div>
@@ -72,11 +70,13 @@ if(isset($_SESSION['admin_login'])){
                         $data_trs = mysqli_fetch_array($data2);
                         $status_trs = $data_trs['STATUS_FILE'];
                         if ($status_trs == 'Belum Terverifikasi') {
-                            echo '<a href="verifikasi_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
+                            echo '<a href="verifikasi_rekom_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
                         }else if ($status_trs== 'Sudah Terverifikasi'){
                             echo "Sudah Terverifikasi";
                         }
                         ?>
+                    
+                            </td>
                     <a href="verifikasi_file.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                 </div>
             </div>
