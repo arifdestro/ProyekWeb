@@ -24,7 +24,7 @@ if(isset($_SESSION['admin_login'])){
             <div class="card-header">
             <i class="fas fa-table"></i>
             Peserta Olimpiade</div>
-            <div><a class="btn btn-primary" href="cetak_peserta_olimpiade.php" role="button">Cetak</a></div>
+            <div><a class="btn btn-primary" href="cetak_peserta_olim.php" role="button">Cetak</a></div>
             <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

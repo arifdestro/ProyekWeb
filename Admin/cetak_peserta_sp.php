@@ -29,7 +29,7 @@
 		</tr>
 		<?php 
 		$no = 1;
-		$sql = mysqli_query($koneksi,"select daftar.ID_DAFTAR, daftar.STATUS, daftar.STATUS_FILE,
+		$sql = mysqli_query($koneksi,"SELECT daftar.ID_DAFTAR, daftar.STATUS_BAYAR, daftar.STATUS_FILE,
         jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
         rayon.ID_RAYON, rayon.NAMA_RAYON,
         user.ID_USER, admin.ID_ADMIN,
@@ -46,7 +46,9 @@
         AND daftar.ID_ADMIN = admin.ID_ADMIN
         AND daftar.NPSN = sekolah.NPSN
         AND jenis_lomba.ID_JENIS_LOMBA='J0002'
-        AND daftar.STATUS_FILE='1'
+        AND daftar.STATUS_FILE='Sudah Terverifikasi'
+        AND daftar.STATUS_ABSTRAK='Sudah Terverifikasi'
+        AND daftar.STATUS_BAYAR='Sudah Bayar'
         ");
 		while($data = mysqli_fetch_array($sql)){
 		?>
