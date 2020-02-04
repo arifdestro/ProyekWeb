@@ -60,22 +60,23 @@ if(isset($_SESSION['admin_login'])){
                             <h6 class="d-inline">ID Daftar : </h6>
                             <label><?= $ID_DAFTAR?></label><br>
                             <h6 class="d-inline">Surat Rekom :</h6>
-                            <embed src="../user/src/rekom<?php echo $data['SURAT_REKOM']; ?>.pdf" type='application/pdf' width='100%' height='700px'/><br>
-                            
+                            <label><?= $SURAT_REKOM?></label><br>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <?php
-                        $data2 = mysqli_query($koneksi, "SELECT STATUS_FILE FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
+                        $data2 = mysqli_query($koneksi, "SELECT STATUS_REKOM FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
                         $data_trs = mysqli_fetch_array($data2);
-                        $status_trs = $data_trs['STATUS_FILE'];
+                        $status_trs = $data_trs['STATUS_REKOM'];
                         if ($status_trs == 'Belum Terverifikasi') {
                             echo '<a href="verifikasi_rekom_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
                         }else if ($status_trs== 'Sudah Terverifikasi'){
                             echo "Sudah Terverifikasi";
                         }
                         ?>
+                    
+                            </td>
                     <a href="verifikasi_rekom.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                 </div>
             </div>
