@@ -47,10 +47,8 @@ h1 {
 }
 
 input[type="text"],
-input[type="password"],
-input[type="tel"],
-input[type="email"],
-input[type="foto"]{
+input[type="password"]
+{
   display: block;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -76,8 +74,8 @@ p {
 input[type="text"]:focus,
 input[type="password"]:focus 
 input[type="email"]:focus{
-  border-bottom: 2px solid rgb(247, 178,74);
-  color: rgb(247, 178,74);
+  border-bottom: 2px solid rgb(74, 129, 247);
+  color: rgb(74, 129, 247);
   transition: 0.2s ease;
 }
 
@@ -85,7 +83,7 @@ input[type="submit"]{
   margin-top: 11px;
   width: 120px;
   height: 38px;
-  background: rgb(247, 178,74);
+  background: rgb(106, 74, 247);
   border: none;
   border-radius: 12px;
   color:#43270f;
@@ -109,19 +107,6 @@ input[type="submit"]:active {
   transition: 0.1s ease;
 }
 
-.or {
-  position: absolute;
-  top: 180px;
-  left: 280px;
-  width: 40px;
-  height: 40px;
-  background: #DDD;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  line-height: 40px;
-  text-align: center;
-}
-
 .right {
   position: absolute;
   top: 0;
@@ -142,18 +127,19 @@ input[type="submit"]:active {
   margin-bottom: -50px;
   font-weight : 650;
   font-size: 20px;
-  color: white;
+  color: black;
   text-align: center;
 }
 
 button.social-signin {
+  /* margin: 20px 0 0  0; */
   margin-bottom: 15px;
   width: 140px;
   height: 38px;
   left :400px;
   border: none;
   border-radius: 12px;
-  color:rgb(247, 178,74) ;
+  color:rgb(74, 91, 247) ;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -173,7 +159,7 @@ button.social-signin:active {
 }
 
 button.social-signin.facebook {
-  background: #43270f;
+  background: #0f3b43;
   text-decoration: none;
 }
 

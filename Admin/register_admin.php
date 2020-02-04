@@ -66,8 +66,8 @@ if (isset($_POST["signup_submit"])){
           <span class="ketsignup"> DAFTAR</span>
           
           <input type="text" name="username" placeholder="Username" required autocomplete="off" autofocus/>
-          <input type="password" name="password" placeholder="Password" required autocomplete="off"/>
-          <input type="password" name="password2" placeholder="Ulagi Password" required autocomplete="off"/>
+          <input type="password" name="password" placeholder="Password" required autocomplete="off" autofocus/>
+          <input type="password" name="password2" placeholder="Ulagi Password" required autocomplete="off" autofocus/>
          <input type="submit" name="signup_submit" value="Daftar" />
         
         

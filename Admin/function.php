@@ -1,7 +1,7 @@
 <?php 
 
 //koneksi ke database
-$koneksi= mysqli_koneksi("localhost", "root", "", "simba_iain");
+include 'includes/connector.php'; 
 
 
 function daftar($data) {
@@ -12,19 +12,17 @@ function daftar($data) {
     $password2= mysqli_real_escape_string ($koneksi, $data["password2"]);
 
     
-    }
-
 //id autoincrement dari varchar`
 $cri_id = mysqli_query ($koneksi, "SELECT max(ID_ADMIN) AS ID_ADMIN FROM admin");
 $cari = mysqli_fetch_array ($cri_id);
-$kode = substr ($cari ['ID_ADMIN'], 3,6);
+$kode = substr ($cari ['ID_ADMIN'], 2,5);
 $id_tbh = $kode+1;
 
 if($id_tbh<10) {
-    $id="A00".$id_tbh;
+    $id="A000".$id_tbh;
 }else if($id_tbh>=10 && $id_tbh<100)
-{$id="A0".$id_tbh;
-}else{$id="A".$id_tbh;
+{$id="A00".$id_tbh;
+}else{$id="A0".$id_tbh;
 
 }
 
@@ -53,6 +51,9 @@ mysqli_query ($koneksi , "INSERT INTO `admin`(`ID_ADMIN`, `NAMA_ADMIN`, `PASSWOR
                                         VALUES  ('$id', '$username', '$password')") ;
   
 return mysqli_affected_rows($koneksi);
+    }
+
+
 
 
  
