@@ -12,7 +12,7 @@ if(isset($_SESSION['admin_login'])){
         $ID_DAFTAR = $_GET['ID_DAFTAR'];
 
         $result_trs = mysqli_query($koneksi,  
-        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS 
+        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR 
         FROM daftar, bayar, user 
         WHERE daftar.ID_USER = user.ID_USER 
         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
@@ -24,7 +24,7 @@ if(isset($_SESSION['admin_login'])){
         $ID_DAFTAR = $data_dtr['ID_DAFTAR'];
         $TGL_BAYAR = $data_dtr['TGL_BAYAR'];
         $ID_BAYAR = $data_dtr['ID_BAYAR'];
-        $STATUS = $data_dtr['STATUS'];
+        $STATUS_BAYAR = $data_dtr['STATUS_BAYAR'];
     }
     ?>
 
@@ -54,13 +54,13 @@ if(isset($_SESSION['admin_login'])){
                 </div>
                 <div class="card-footer">
                     <?php
-                        $data2 = mysqli_query($koneksi, "SELECT STATUS FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
+                        $data2 = mysqli_query($koneksi, "SELECT STATUS_BAYAR FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
                         $data_trs = mysqli_fetch_array($data2);
-                        $status_trs = $data_trs['STATUS'];
-                        if ($status_trs == 0) {
+                        $status_trs = $data_trs['STATUS_BAYAR'];
+                        if ($status_trs == 'Belum Bayar') {
                             echo '<a href="bayar_info_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
-                        }else if ($status_trs==1){
-                            echo "Sudah Terverifikasi";
+                        }else if ($status_trs== 'Sudah Bayar'){
+                            echo "Sudah Bayar";
                         }
                         ?>
                     <a href="bayar.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>

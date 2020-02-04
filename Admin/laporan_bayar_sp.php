@@ -31,11 +31,11 @@ if(isset($_SESSION['admin_login'])){
         <thead class="thead-dark">
                         <tr>
                             <th>No.</th>
-                            <th>NAMA USER</th>
                             <th>TGL DAFTAR</th>
-                            <th>ID DAFTAR</th>
                             <th>TGL BAYAR</th>
+                            <th>ID DAFTAR</th>
                             <th>ID BAYAR</th>
+                            <th>NAMA USER</th>
                             <th>TOTAL BAYAR</th>
                         </tr>
                     </thead>
@@ -43,14 +43,15 @@ if(isset($_SESSION['admin_login'])){
 
                         <?php
                         $result = mysqli_query($koneksi, 
-                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR, jenis_lomba.ID_JENIS_LOMBA, daftar.STATUS_FILE, daftar.TOTAL_BAYAR
+                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR, jenis_lomba.ID_JENIS_LOMBA, daftar.STATUS_FILE, daftar.STATUS_REKOM, daftar.TOTAL_BAYAR
                         FROM daftar, bayar, user, jenis_lomba
                         WHERE daftar.ID_USER = user.ID_USER
                         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
                         AND daftar.ID_JENIS_LOMBA=jenis_lomba.ID_JENIS_LOMBA
                         AND jenis_lomba.ID_JENIS_LOMBA='J0002'
                         AND daftar.STATUS_BAYAR='Sudah Bayar'
-                        AND daftar.STATUS_FILE='1'
+                        AND daftar.STATUS_FILE='Sudah Terverifikasi'
+                        AND daftar.STATUS_REKOM='Sudah Terverifikasi'
                         ");
 
                         if(mysqli_num_rows($result) > 0){
@@ -62,11 +63,11 @@ if(isset($_SESSION['admin_login'])){
                                 echo '
                                 <tr>
                                     <td>'.$no.'</td>
-                                    <td>'.$data['NAMA_USER'].'</td>
-                                    <td>'.$data['ID_DAFTAR'].'</td>
                                     <td>'.$data['TGL_DAFTAR'].'</td>
-                                    <td>'.$data['ID_BAYAR'].'</td>
                                     <td>'.$data['TGL_BAYAR'].'</td>
+                                    <td>'.$data['ID_DAFTAR'].'</td>
+                                    <td>'.$data['ID_BAYAR'].'</td>
+                                    <td>'.$data['NAMA_USER'].'</td>
                                     <td>'.$data['TOTAL_BAYAR'].'</td>
                                 </tr>
                                 ';

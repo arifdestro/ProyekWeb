@@ -33,8 +33,8 @@ if(isset($_POST['signup_submit'])){
         $NPSN = $_POST['NPSN'];
         
         
-        $STATUS_REKOM= 0;
-        $STATUS_FILE=0;
+        $STATUS_REKOM= 'Belum Terverifikasi';
+        $STATUS_FILE='Sudah Terverifikasi';
         $STATUS_BAYAR= 'Belum Bayar';
         $TOTAL_BAYAR=0;
         $JUMLAH_SISWA=0;
@@ -88,8 +88,8 @@ if(isset($_POST['signup_submit'])){
         $ID_ADMIN= 'A0001';
         $NPSN = $_POST['NPSN'];
         
-        $STATUS_REKOM= 0;
-        $STATUS_FILE=0;
+        $STATUS_REKOM= 'Belum Terverifikasi';
+        $STATUS_FILE= 'Belum Terverifikasi';
         $STATUS_BAYAR= 'Belum Bayar';
         $TOTAL_BAYAR=0;
         $JUMLAH_SISWA=0;

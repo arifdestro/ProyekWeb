@@ -30,7 +30,7 @@
 		</tr>
 		<?php 
 		$no = 1;
-		$sql = mysqli_query($koneksi,"select daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, daftar.TOTAL_BAYAR, bayar.TGL_BAYAR, daftar.STATUS, jenis_lomba.ID_JENIS_LOMBA
+		$sql = mysqli_query($koneksi,"select daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, daftar.TOTAL_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR, jenis_lomba.ID_JENIS_LOMBA
         FROM daftar, bayar, user, jenis_lomba
         WHERE daftar.ID_USER = user.ID_USER
         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR

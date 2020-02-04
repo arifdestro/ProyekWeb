@@ -43,12 +43,23 @@ if(isset($_SESSION['admin_login'])){
 
                         <?php
                         $result = mysqli_query($koneksi, 
-                        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.ID_USER, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS, jenis_lomba.ID_JENIS_LOMBA
+                        "SELECT daftar.ID_DAFTAR,
+                        daftar.TGL_DAFTAR, 
+                        user.ID_USER, 
+                        user.NAMA_USER, 
+                        bayar.ID_BAYAR, 
+                        bayar.TGL_BAYAR, 
+                        daftar.STATUS_BAYAR, 
+                        daftar.STATUS_REKOM,
+                        daftar.STATUS_FILE,
+                        jenis_lomba.ID_JENIS_LOMBA
                         FROM daftar, bayar, user, jenis_lomba
                         WHERE daftar.ID_USER = user.ID_USER
                         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
                         AND daftar.ID_JENIS_LOMBA=jenis_lomba.ID_JENIS_LOMBA
                         AND jenis_lomba.ID_JENIS_LOMBA='J0001'
+                        AND daftar.STATUS_FILE='Sudah Terverifikasi'
+                        AND daftar.STATUS_REKOM='Sudah Terverifikasi'
                         ");
 
                         if(mysqli_num_rows($result) > 0){
@@ -65,7 +76,7 @@ if(isset($_SESSION['admin_login'])){
                                     <td>'.$data['TGL_DAFTAR'].'</td>
                                     <td>'.$data['ID_BAYAR'].'</td>
                                     <td>'.$data['TGL_BAYAR'].'</td>
-                                    <td>'.$data['STATUS'].'</td>
+                                    <td>'.$data['STATUS_BAYAR'].'</td>
                                     <td>
                                         <a href="bayar_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="badge badge-primary"><i class="fas fa-info"></i></a>
                                     </td>                    

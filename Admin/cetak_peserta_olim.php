@@ -30,7 +30,7 @@
 		<?php 
 		$no = 1;
 		$sql = mysqli_query($koneksi,"select daftar.ID_DAFTAR, daftar.STATUS_REKOM,
-        jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA,
+        jenis_lomba.ID_JENIS_LOMBA, jenis_lomba.NAMA_LOMBA, daftar.STATUS_BAYAR,
         rayon.ID_RAYON, rayon.NAMA_RAYON,
         user.ID_USER, admin.ID_ADMIN,
         sekolah.NPSN, sekolah.NAMA_SEKOLAH,
@@ -46,7 +46,8 @@
         AND daftar.ID_ADMIN = admin.ID_ADMIN
         AND daftar.NPSN = sekolah.NPSN
         AND jenis_lomba.ID_JENIS_LOMBA='J0001'
-        AND daftar.STATUS_REKOM='1'
+        AND daftar.STATUS_REKOM='Sudah Terverifikasi'
+        AND daftar.STATUS_BAYAR='Sudah Bayar'
         ");
 		while($data = mysqli_fetch_array($sql)){
 		?>
