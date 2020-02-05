@@ -1,7 +1,3 @@
-<?php
-error_reporting(0);
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +7,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simba | Sistem aplikasi Lomba</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
 
     <!--  Bootstrap css file  -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -30,6 +29,8 @@ session_start();
 
     <!--  custom css file  -->
     <link rel="stylesheet" href="./css/desain.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="faq.css">
 
     <!-- timeline -->
     <link rel="stylesheet" href="./css/timeline.min.css">
@@ -52,7 +53,7 @@ session_start();
         <header class="header_area">
             <div class="main-menu">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#"><img src="./img/logo1.png" width="100px" alt="logo"></a>
+                    <a class="navbar-brand" href="index.php"><img src="./img/logo1.png" width="100px" alt="logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -63,27 +64,29 @@ session_start();
                                 <a class="nav-link" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Tutorial</a>
+                                <a class="nav-link" href="#tutorial">Tutorial</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pendaftraan</a>
+                                <a class="nav-link" href="daftar.php">Pendaftraan</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Tentang</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bantuan</a>
+                                <a class="nav-link" href="faq.php">Bantuan</a>
                             </li>
                         </ul>
                         <div class="button-place mr-auto">
                             <ul class="navbar-nav">
                                 <?php
+                                error_reporting(0);
+                                session_start();
                                 if ($_SESSION['status'] == 'login') {
                                 ?>
                                     <li class="nav-item">
                                         <div class="dropdown">
                                             <button class="pt-2 btn dropdown-toggle" type="button" id="menu-profile" data-toggle="dropdown">
-                                                <img class="mt-1 rounded-circle img-circle" src="./img/avatar.jpg" width="50px">
+                                                <img class="mt-1 rounded-circle img-circle" src="./img/avatar.png" width="50px">
                                                 <span class="caret"></span>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right text-right">
@@ -94,14 +97,14 @@ session_start();
                                         </div>
                                     </li>
                                 <?php
-                                } else if ($_SESSION['status'] != 'login') {
+                                } elseif ($_SESSION['status'] != 'login') {
                                     // header("location:../index.php?=belum login");
                                     echo
                                         '<li class="nav-item">
                                     <button class="nav-link text-white btn btn-ungu js-scroll-trigger mr-2" data-target="#login_user" data-toggle="modal">MASUK</button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="nav-link text-white btn btn-oranye js-scroll-trigger ml-2" href="register_user.php">DAFTAR</button>
+                                    <button class="nav-link text-white btn btn-oranye js-scroll-trigger ml-2" href="register.php">DAFTAR</button>
                                 </li>';
                                 }
                                 ?>
@@ -137,5 +140,20 @@ session_start();
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>';
+            } else if ($_GET['pesan'] == 'registersuccess') {
+                echo '<div id="alert-login" class="text-center alert alert-success alert-dismissible fade show position-fixed alert-login mx-auto" role="alert">
+                        Anda <strong>Berhasil!</strong> mendaftar, silahkan Login!.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>';
+            } else if ($_GET['pesan'] == 'successrepassword') {
+                echo '<div id="alert-login" class="text-center alert alert-success alert-dismissible fade show position-fixed alert-login mx-auto" role="alert">
+                      Anda <strong>Berhasil!</strong> mengganti password baru, silahkan Login!.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>';
             }
         }
+        ?>

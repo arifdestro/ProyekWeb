@@ -81,9 +81,8 @@ if(isset($_SESSION['admin_login'])){
                             <td>'.$data['SURAT_REKOM'].'</td>
                             <td>'.$data['STATUS_REKOM'].'</td>
                             <td>
-                            <a href="verifikasi_rekom_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="badge badge-primary"><i class="fas fa-info"></i></a>
+                            <a href="verifikasi_rekom_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" data-dismiss="modal">Verifikasi</a>
                             </td>
-
                         </tr>
                         ';
                         $no++;

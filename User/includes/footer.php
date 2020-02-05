@@ -1,4 +1,4 @@
-<footer class="footer-area">
+<!-- <footer class="footer-area">
     <div class="container">
         <div class="">
             <div class="site-logo text-center py-4">
@@ -18,7 +18,64 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
+
+<footer class="sticky-footer" id="footer">
+    <div class="footer-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 footer-info">
+                    <div class="site-logo text-left py-4">
+                        <a href="#"><img src="./img/logo1.png" width="100px" alt="logo"></a>
+                    </div>
+                    <p>Merupakan aplikasi berbasis web yang dapat membantu dalam manajemen event seperti lomba dan lain-lain.</p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Link Terkait</h4>
+                    <ul>
+                        <li><a href="#intro">Home</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Hubungi Kami</h4>
+                    <p>
+                        Jl. Adityawarman,Sumbersari,
+                        Jember,Jawa Timur 68124,<br>
+                        <strong>Phone:</strong> 0838-5210-9582<br>
+                        <strong>Email:</strong> destro.comm1299@qmail.id<br>
+                    </p>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <!-- <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a> -->
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-newsletter">
+                    <img src="./img/banner/img.png" alt="piala" width="100%">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>SIMBA <script>
+                    var CurrentYear = new Date().getFullYear()
+                    document.write(CurrentYear)
+                </script></strong>. All Rights Reserved
+        </div>
+    </div>
+</footer><!-- #footer -->
 
 <div class="login-bg">
     <div class="row">

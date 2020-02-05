@@ -60,6 +60,7 @@ if(isset($_SESSION['admin_login'])){
                         AND jenis_lomba.ID_JENIS_LOMBA='J0001'
                         AND daftar.STATUS_FILE='Sudah Terverifikasi'
                         AND daftar.STATUS_REKOM='Sudah Terverifikasi'
+
                         ");
 
                         if(mysqli_num_rows($result) > 0){
@@ -78,7 +79,7 @@ if(isset($_SESSION['admin_login'])){
                                     <td>'.$data['TGL_BAYAR'].'</td>
                                     <td>'.$data['STATUS_BAYAR'].'</td>
                                     <td>
-                                        <a href="bayar_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="badge badge-primary"><i class="fas fa-info"></i></a>
+                                        <a href="bayar_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary">Verifikasi</a>
                                     </td>                    
                                 </tr>
                                 ';

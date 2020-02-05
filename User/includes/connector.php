@@ -27,5 +27,5 @@ function autonumber($id_terakhir, $panjang_kode, $panjang_angka)
     // menggabungkan kode dengan nilang angka baru
     $id_baru = $kode . $angka_baru;
 
-    // return $id_baru;
+    return $id_baru;
 }

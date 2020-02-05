@@ -33,7 +33,7 @@ if (isset($_POST['submit_siswa'])) {
         } else if ($ID_JENIS_LOMBA == 'J0002') {
             $STATUS_SISWA = 2;
         }
-        var_dump($STATUS_SISWA);
+        // var_dump($STATUS_SISWA);
         $NAMA_SISWA = $_POST['NAMA_SISWA'];
         $TEMPAT_LAHIR = $_POST['NAMA_SISWA'];
         $TANGGAL_LAHIR = $_POST['TANGGAL_LAHIR'];

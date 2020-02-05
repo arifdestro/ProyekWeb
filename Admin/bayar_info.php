@@ -8,11 +8,12 @@ if(isset($_SESSION['admin_login'])){
     include 'includes/sidebar.php' ;
 
     if (isset($_GET['ID_DAFTAR'])) {
-        // $id_transaksi = $_GET['id_transaksi'];
+        
         $ID_DAFTAR = $_GET['ID_DAFTAR'];
 
         $result_trs = mysqli_query($koneksi,  
-        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.NAMA_USER, bayar.ID_BAYAR, bayar.TGL_BAYAR, daftar.STATUS_BAYAR 
+        "SELECT daftar.ID_DAFTAR, daftar.TGL_DAFTAR, user.NAMA_USER, bayar.ID_BAYAR, 
+        bayar.TGL_BAYAR, daftar.STATUS_BAYAR, bayar.BUKTI_BAYAR
         FROM daftar, bayar, user 
         WHERE daftar.ID_USER = user.ID_USER 
         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
@@ -25,6 +26,7 @@ if(isset($_SESSION['admin_login'])){
         $TGL_BAYAR = $data_dtr['TGL_BAYAR'];
         $ID_BAYAR = $data_dtr['ID_BAYAR'];
         $STATUS_BAYAR = $data_dtr['STATUS_BAYAR'];
+        $BUKTI_BAYAR=$data_dtr['BUKTI_BAYAR'];
     }
     ?>
 
@@ -50,6 +52,10 @@ if(isset($_SESSION['admin_login'])){
                             <h6 class="d-inline">ID BAYAR :</h6>
                             <label><?= $ID_BAYAR ?></label>
                         </div>
+                        <div>
+                        <img class="img-responsive" src="../User/src/bukti_transfer/<?=$BUKTI_BAYAR?>" alt="Bukti Belum di Upload" width="300" height="500"> 
+                        </div>
+
                     </div>
                 </div>
                 <div class="card-footer">
@@ -57,19 +63,20 @@ if(isset($_SESSION['admin_login'])){
                         $data2 = mysqli_query($koneksi, "SELECT STATUS_BAYAR FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
                         $data_trs = mysqli_fetch_array($data2);
                         $status_trs = $data_trs['STATUS_BAYAR'];
-                        if ($status_trs == 'Belum Bayar') {
-                            echo '<a href="bayar_info_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
+                        if ($status_trs == 'Proses Verif') {
+                            echo '<a href="bayar_info_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-success">Verifikasi</a>
+                            <a href="gagal_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-danger">Bukti Salah</a>';
                         }else if ($status_trs== 'Sudah Bayar'){
-                            echo "Sudah Bayar";
+                            echo '';
                         }
                         ?>
                     <a href="bayar.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                    <br><br>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <?php 
                 include 'includes/footer.php';
