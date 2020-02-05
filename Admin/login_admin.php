@@ -38,24 +38,12 @@
               <label for="inputPassword">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-
           <div>
           <input type="submit" class="btn btn-primary btn-block" name="login_admin" value="Login">
           </div>
 
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="register_admin.php">Register an Account</a>
-        </div>
-      </div>
+    </div>
     </div>
   </div>
 

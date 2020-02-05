@@ -25,7 +25,6 @@ if(isset($_SESSION['admin_login'])){
         <div class="card-header">
         <i class="fas fa-table"></i>
         Data User</div>
-        <div><a class="btn btn-primary" href="tambah_user.php" role="button">Tambah</a></div>
         <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -59,7 +58,6 @@ if(isset($_SESSION['admin_login'])){
                         <td>'.$data['PASSWORD_USER'].'</td>
                         <td>
                             <a href="ubah_user.php?ID_USER='.$data['ID_USER'].'" class="badge badge-warning">Edit</a>
-                            <a href="hapus_user.php?ID_USER='.$data['ID_USER'].'" class="badge badge-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Delete</a>
                         </td>
                     </tr>
                     ';

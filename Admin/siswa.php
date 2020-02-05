@@ -26,7 +26,6 @@ if(isset($_SESSION['admin_login'])){
         <div class="card-header">
         <i class="fas fa-table"></i>
         Data Siswa</div>
-        <div><a class="btn btn-primary" href="tambah_siswa.php" role="button">Tambah</a></div>
         <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

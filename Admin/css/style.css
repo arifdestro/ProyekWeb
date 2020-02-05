@@ -139,7 +139,7 @@ button.social-signin {
   left :400px;
   border: none;
   border-radius: 12px;
-  color:rgb(74, 91, 247) ;
+  color:wheat ;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -159,7 +159,7 @@ button.social-signin:active {
 }
 
 button.social-signin.facebook {
-  background: #0f3b43;
+  background: black;
   text-decoration: none;
 }
 
