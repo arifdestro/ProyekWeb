@@ -1,8 +1,9 @@
 <?php
 session_start();
-include 'includes/connector.php';
+require 'includes/connector.php';
+require 'includes/header.php';
 
-if (isset($_SESSION['USER_LOGIN'])) {
+if (isset($_SESSION['user_login'])) {
     $NAMA_USER=$_SESSION['NAMA_USER'];
     $ID_USER=$_SESSION['ID_USER'];
 
@@ -14,7 +15,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SIMBA for IAIN</title>
+    <title>SIMBA | Sistem Informasi Lomba</title>
 
     <!-- link css yang kita buat -->
     <link rel="stylesheet" href="style.css">
@@ -34,16 +35,32 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
 </head>
 <body>
+    <section class="site-banner1 ">
+        <div class="container container-fluid-lg justify-content-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 m-5 site-title">
+                    <h1 class="title-text text-uppercase text-white">Pendaftaran Lomba</h1> 
+                    <div class="daftaran flo">
+                        <h5 class="text-white">Berikut adalah halaman untuk pendaftaran lomba:</h5>
+                        <h5 class="text-white">1. Pertama klik tombol *Tambah Lomba*</h4>
+                        <h5 class="text-white">2. Kedua klik *Tambahkan Siswa* sesuai yang akan didaftarkan</h5>
+                        <h5 class="text-white">3. Ketiga klik *Lihat Detail* untuk melihat detail pendaftaran</h5>
+                        <h5 class="text-white">4. Ketiga klik *Checkout* untuk melanjutkan pendaftaran</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="container container-fluid-lg">
-    <div class="row justify-content-center">
-    <div class="col-lg-12 m-5">
-        <div class="card p shadow">
-            <div class="card-header text-center text-light bg-info">
+    <div class="col-lg-12 mt-4">
+        <div class="card p shadow mt-4 mb-4">
+        <?php require 'includes/header-konten.php';?>
+            <div class="card-header text-center text-light bg-primary">
                 <h3 class="m-0">HALAMAN PENDAFTARAN LOMBA</h3>
             </div>
         <div class="card-body p-4">
-            <div><h5>Klik Daftar Jika anda hendak menambahkan pendaftaran baru</h5></div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah Daftar</button>
+            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal">Tambah Daftar</button>
+            <div><small>** Klik Daftar Jika anda hendak menambahkan pendaftaran baru **</small></div>
             <br><hr><br>
 
 <!-- Modal Tambah Daftar -->
@@ -63,7 +80,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     <div class="container">
                     <form action="upload_daftar.php" method="POST" enctype="multipart/form-data">
                     
-                        <input type="text" class="form-control" name="ID_USER" value="<?= $ID_USER ?>" hidden>
+                        <input type="text" class="form-control" name="ID_USER" value="<?= $ID_USER ?>"hidden>
                         
                                 <label for="Nama User">Nama User</label>
                                 <input readonly type="text" class="form-control" id="NAMA_USER" name="NAMA_USER" value="<?= $NAMA_USER ?>">
@@ -114,15 +131,15 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
                         <div class="form-group">
                             <label>File Abstrak</label>
-                            <input required  type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
+                            <input type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
                         </div>
 
                         <br><hr><br>
 
-                        <div class="from-group row" float="right">
-                            <a href="myModal" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                        <div class="from-group row" float="left">
+                            <button type="200th" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <hr>
-                            <button type="submit" class="btn btn-primary ml-2" name="signup_submit">Simpan</button>
+                            <button type="submit" class="btn btn-primary" name="signup_submit">Simpan</button>
                             
                             <hr>
                         </div>
@@ -134,7 +151,7 @@ if (isset($_SESSION['USER_LOGIN'])) {
                     
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                    <h5 class="m-0">Halaman ini adalah dashboard admin yngmana anda dapat melakukan pendaftaran.</h5>
+                    <h6 class="m-0">** Halaman ini adalah dashboard user untuk anda dapat melakukan pendaftaran. **</h6>
                         
                     </div>
                     
@@ -270,22 +287,40 @@ if (isset($_SESSION['USER_LOGIN'])) {
                                     <input required type="text" name="ALAMAT" class="form-control" required>
                                 </div>
                         </div>
-
-                        <div class="from-group row custom-control custom-radio">
+                        <!-- <div class="form-group row ">
                         <label class="col-sm-2 col-form-label" required>Jenis Kelamin</label>
-                            <input type="radio" name="JENIS_KELAMIN" value="LAKI LAKI" required="required" />Laki Laki
-                            <input type="radio" name="JENIS_KELAMIN" value="PEREMPUAN" required="required" />Perempuan
-                        </div>
+                            <input type="radio" class="ml-2" name="JENIS_KELAMIN" value="LAKI LAKI" required="required" /> Laki Laki
+                            <input type="radio" class="ml-2" name="JENIS_KELAMIN" value="PEREMPUAN" required="required" /> Perempuan
+                        </div> -->
+                        <fieldset class="form-group">
+                            <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                <input class="form-check-input" type="radio" name="JENIS_KELAMIN" value="LAKI LAKI" required>
+                                <label class="form-check-label" for="gridRadios1">
+                                    Laki-laki
+                                </label>
+                                </div>
+                                <div class="form-check">
+                                <input class="form-check-input" type="radio" name="JENIS_KELAMIN" value="PEREMPUAN" required>
+                                <label class="form-check-label" for="gridRadios2">
+                                    Perempuan
+                                </label>
+                                </div>
+                            </div>
+                            </div>
+                        </fieldset>
 
                         <div class="form-group">
                                 <label for="NPSN">Foto Siswa</label>
                                 <input required type="file" class="form-control-file border" accept=".jpg, .png, .jpeg" name="FOTO" >
                         </div>
 
-                        <div class="from-group row" float="right">
+                        <div class="from-group row text-center">
                             <a href="myModal" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                             <hr>
-                            <button type="submit" class="btn btn-primary" name="submit_siswa" float="right"> Simpan</button>
+                            <button type="submit" class="btn btn-primary" name="submit_siswa"> Simpan</button>
                         </div>
 
                         
@@ -293,14 +328,11 @@ if (isset($_SESSION['USER_LOGIN'])) {
 
                     </div>
                     </form>
-            </div>
-                    
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                    <h5 class="m-2">Dengan ini, saya menyatakan data siswa yang saya masukan adalah benar adanya.</h5>
-                        
+                    <h6 class="m-2">** Dengan ini, saya menyatakan data siswa yang saya masukan adalah benar adanya. **</h6>
                     </div>
-                    
+            </div>
                 </div>
                 </div>
 
@@ -460,18 +492,17 @@ if (isset($_SESSION['USER_LOGIN'])) {
                         ?>    
                     <body>
                 </table>
+                        <div class="from-group d-flex justify-content-center">
+                            <a href="myModal" class="btn btn-secondary mr-4" data-dismiss="modal">Kembali</a>
+                            <a href="query_checkout.php?ID_DAFTAR=<?=$ID_DAFTAR_DET?>&TOTAL_BAYAR=<?=$TOTAL_BAYAR_DET?>" class="btn btn-warning mt-4" >CheckOut</a>
+                        </div>
             </div>
 <!-- Batas Tabel Siswa -->
                     </div>
                     
                     <!-- Modal footer -->
-                    <div class="modal-footer">
-                    <h5 class="m-2">Dengan ini, saya menyatakan semua data yang saya masukan adalah benar adanya, serta siap untuk mengikuti tahap pembayaran.</h5>
-                        <div class="from-group row" float="right">
-                            <a href="myModal" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                            <hr>
-                            <a href="query_checkout.php?ID_DAFTAR=<?=$ID_DAFTAR_DET?>&TOTAL_BAYAR=<?=$TOTAL_BAYAR_DET?>" class="btn btn-secondary" >CheckOut</a>
-                        </div>
+                    <div class="modal-footer text-center">
+                        <h6 class="m-2">** Dengan ini, saya menyatakan semua data yang saya masukan adalah benar adanya, serta siap untuk mengikuti tahap pembayaran. **</h6>
                     </div>
                     
                 </div>
@@ -483,17 +514,21 @@ if (isset($_SESSION['USER_LOGIN'])) {
             ?>
 
 <!-- Batas Modal Detail -->
-
-            <div><h5>Berikut adalah Pendaftaran yang telah anda lakukan. Anda dapat melanjutkan untuk menambahkan siswa, dan melihat detail Sebelum Checkout</h5></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="card col-md-8 bg-warning p-l0 text-justify mb-5"><h6>** Berikut adalah Pendaftaran yang telah anda lakukan. Anda dapat melanjutkan untuk menambahkan siswa, dan melihat detail sebelum checkout. **</h6></div>
+                </div>    
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="thead-light">
+                    <thead class="thead-light text-center">
                         <tr>
                             <th>No.</th>
                             <th>ID Daftar</th>
                             <th>Tanggal Daftar</th>
                             <th>Jenis Lomba</th>
-                            <th>Jumlah Siswa</th>                            
+                            <th>Jumlah Siswa</th>
+                            <th>Harga</th>                            
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -567,21 +602,20 @@ if (isset($_SESSION['USER_LOGIN'])) {
 <!-- Batas Tabel Daftar -->
 
             </div>
-                <div class="card-footer p-4">
-                <h5 class="m-0">Setelah mengisi Formulir pendaftaran ini, anda dapat melakukan pengisian formulir siswa dengan mengklik tambah siswa.</h5>
+                <div class="card-footer p-4 text-center">
+                    <h6 class="m-0">** Setelah mengisi Formulir pendaftaran ini, anda dapat melakukan pengisian formulir siswa dengan mengklik tambah siswa. **</h6>
                 </div>
-                <a href="logout_user.php" class="btn btn-danger" data-dismiss="modal" onclick="return confirm(\'Yakin ingin logout?\')">Logout</a>
             </div>
         </div>
     </div>
-</div>
-<script src="process.js"></script>
+<script src="./js/process.js"></script>
 </body>
 </html>
 
 <?php } else {
-        require 'login_user.php';
+        require 'index.php';
     }
 ?>
 
+<?php require 'includes/footer.php'?>
 <!-- <a href="tambah_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Lihat Detail</a> -->

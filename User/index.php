@@ -4,8 +4,6 @@ require 'includes/header.php';
 ?>
 <!--  ======================= Start Main Area ================================ -->
 <main class="site-main">
-
-
     <!--  ======================= Start Banner Area =======================  -->
     <section class="site-banner">
         <div class="container">
@@ -16,9 +14,9 @@ require 'includes/header.php';
                     <h4 class="title-text text-uppercase text-white">Sistem Informasi Lomba</h4>
                     <div class="site-buttons">
                         <div class="d-flex flex-row flex-wrap">
-                            <button type="button" class="btn button primary-button mr-4 text-uppercase">Register</button>
-                            <button type="button" class="btn button secondary-button text-uppercase">Lebih
-                                Lanjut</button>
+                            <a href="register.php" class="btn button primary-button mr-4 text-uppercase">Register</a>
+                            <a type="button" class="btn button secondary-button text-uppercase">Lebih
+                                Lanjut</a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +130,7 @@ require 'includes/header.php';
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12 ml-2 shadow price">
                     <h3 class="text-center font-roboto font-weight-bold text-uppercase pt-5 style=" style="color:#00A2E9">Science Product</h3>
-                    <div class="lomba">
+                    <div class="lomba justify-content-center">
                         <div class="lomba-img text-center py-4">
                             <img src="./img/lomba/sp.png" alt="os">
                         </div>
@@ -171,7 +169,7 @@ require 'includes/header.php';
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading text-center" style="margin-bottom:25px!important">
-                            <h3 class="mt-30 mb-70" style="font-size:30px;color:#00A2E9;font-weight:800;text-align:center">TIMELINES
+                            <h3 class="mt-30 mb-70" style="font-size:30px;color:#00A2E9;font-weight:800;text-align:center">TIMELINES EVENT
                             </h3>
 
                         </div>
@@ -308,7 +306,6 @@ require 'includes/header.php';
     </section>
 
     <!--  ========================= End About Area ==========================  -->
-
 
     <!--  ======================== About Me Area ==============================  -->
 
