@@ -64,19 +64,23 @@ if(isset($_SESSION['admin_login'])){
                         </div>
                     </div>
                 </div>
+
+
                 <div class="card-footer">
                     <?php
                         $data2 = mysqli_query($koneksi, "SELECT STATUS_FILE FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
                         $data_trs = mysqli_fetch_array($data2);
                         $status_trs = $data_trs['STATUS_FILE'];
                         if ($status_trs == 'Belum Terverifikasi') {
-                            echo '<a href="verifikasi_rekom_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
+                            echo '<a href="verifikasi_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
+                            '<a href="../yuser/images/<?= $SURAT_REKOM?>">Lihat</a>';
+
                         }else if ($status_trs== 'Sudah Terverifikasi'){
-                            echo "Sudah Terverifikasi";
+                            echo '<a href="../yuser/images/<?= $SURAT_REKOM?>">Lihat</a>';
                         }
                         ?>
-                    
-                            </td>
+                        </td>
+                    <a href="../yuser/images/<?= $FILE_ABSTRAK?>" class="btn btn-primary">Lihat</a>
                     <a href="verifikasi_file.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                 </div>
             </div>
