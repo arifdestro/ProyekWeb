@@ -63,7 +63,7 @@ if(isset($_SESSION['admin_login'])){
                         $data2 = mysqli_query($koneksi, "SELECT STATUS_BAYAR FROM daftar WHERE ID_DAFTAR ='$ID_DAFTAR'");
                         $data_trs = mysqli_fetch_array($data2);
                         $status_trs = $data_trs['STATUS_BAYAR'];
-                        if ($status_trs == 'Proses Verif') {
+                        if ($status_trs == 'Proses Verifikasi') {
                             echo '<a href="bayar_info_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-success">Verifikasi</a>
                             <a href="gagal_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-danger">Bukti Salah</a>';
                         }else if ($status_trs== 'Sudah Bayar'){

@@ -115,8 +115,8 @@ if (isset($_SESSION['user_login'])) {
 
                         <div class="group">
                             <label>NPSN</label>
-                            <input required type="text" class="form-control disabled" id="NPSN" name="NPSN" >
-                            <button class="mt-2" type="button" id="btn-search">Cari</button>
+                            <input required type="text" class="form-control disabled" id="NPSN" name="NPSN" required pattern="[0-9]*$" placeholder="Masukkan NPSN Sekolah Anda" >
+                            <button class="mt-2" type="button" id="btn-search">Cari</button> 
                         </div>
 
                         <div class="form-group">
@@ -128,12 +128,18 @@ if (isset($_SESSION['user_login'])) {
                             <label>Surat Rekom</label>
                             <input required  type="file" class="form-control-file border" name="SURAT_REKOM" accept=".pdf, .doc, .docx">
                         </div>
-
-                        <div class="form-group">
-                            <label>File Abstrak</label>
-                            <input type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
+                        <?php
+                        // $status_abstract = $for_siswa['NAMA_LOMBA'];
+                        // if($status_abstract == 'J0001'){
+                        //     echo'<div class="form-group">
+                        //     <label>File Abstrak</label>
+                        //     <input type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
+                        // </div>';
+                        // }
+                        // ?><div class="form-group">
+                        <label>File Abstrak</label>
+                        <input type="file" class="form-control-file border" name="FILE_ABSTRAK" accept=".pdf, .doc, .docx">
                         </div>
-
                         <br><hr><br>
 
                         <div class="from-group row" float="left">
@@ -256,21 +262,21 @@ if (isset($_SESSION['user_login'])) {
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">NISN</label>
                                 <div class="col-sm-10">
-                                    <input required type="text" name="NISN" class="form-control" required>
+                                    <input required type="text" name="NISN" class="form-control" required pattern="[0-9]*$" placeholder="Masukkan NISN Peserta">
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Siswa</label>
                                 <div class="col-sm-10">
-                                    <input required type="text" name="NAMA_SISWA" class="form-control" required>
+                                    <input required type="text" name="NAMA_SISWA" class="form-control" pattern="[a-zA-Z]*$\" placeholder="Masukkan Nama Peserta">
                                 </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                                 <div class="col-sm-10">
-                                    <input required type="text" name="TEMPAT_LAHIR" class="form-control" required>
+                                    <input required type="text" name="TEMPAT_LAHIR" class="form-control" required  placeholder="Masukkan Tempat Lahir Peserta">
                                 </div>
                         </div>
 
@@ -462,13 +468,12 @@ if (isset($_SESSION['user_login'])) {
                             AND daftar.ID_USER=user.ID_USER 
                             AND daftar.ID_DAFTAR='$ID_DAFTAR'
                             ");
-
+                           
                         if(mysqli_num_rows($result_for_tabel) > 0){
                             //membuat variabel $no untuk menyimpan nomor urut
                             $no = 1;
                             //melakukan perulangan while dengan dari dari query $sql
                             while($data = mysqli_fetch_assoc($result_for_tabel)){
-                                
                                 //menampilkan data perulangan
                                 echo '
                                 <tr>
@@ -478,6 +483,9 @@ if (isset($_SESSION['user_login'])) {
                                         <a href="hapus_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-danger" data-dismiss="modal" onclick="return confirm(\'Yakin ingin menghapus data siswa ini?\')">Hapus Siswa</a>
                                     </td>
                                 </tr>
+                                <div class="custom-file mb-5 ">
+                                <input type="hidden" name="status_file" value="'.$status_rekom.'">
+                                 </div>
                                 ';
                                 $no++;
                             }

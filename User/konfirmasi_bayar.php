@@ -132,7 +132,7 @@ include 'includes/connector.php';
                 </div>              
             <div class="custom-file mb-5 ">
            
-                <input required type="file" name="file" class="form-control-file border" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
+                <input required type="file" name="file" class="form-control-file border" onChange="displayImage(this)" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
                 <label for="uploadfile">Silahkan Transfer dan Upload bukti pembayaran Anda </label>
             </div> 
 
@@ -147,6 +147,6 @@ include 'includes/connector.php';
   </div>
   
 </div>
-
+<script src="display.js"></script>
 </body>
 </html>

@@ -58,7 +58,6 @@ if(isset($_SESSION['admin_login'])){
                         AND bayar.ID_DAFTAR = daftar.ID_DAFTAR
                         AND daftar.ID_JENIS_LOMBA=jenis_lomba.ID_JENIS_LOMBA
                         AND jenis_lomba.ID_JENIS_LOMBA='J0001'
-                        AND daftar.STATUS_FILE='Sudah Terverifikasi'
                         AND daftar.STATUS_REKOM='Sudah Terverifikasi'
 
                         ");

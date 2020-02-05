@@ -67,7 +67,7 @@
                                 <a class="nav-link" href="#tutorial">Tutorial</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="daftar.php">Pendaftaran</a>
+                                <a class="nav-link" href="daftar.php">Pendaftraan</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Tentang</a>
@@ -140,20 +140,6 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>';
-            } else if ($_GET['pesan'] == 'registersuccess') {
-                echo '<div id="alert-login" class="text-center alert alert-success alert-dismissible fade show position-fixed alert-login mx-auto" role="alert">
-                        Anda <strong>Berhasil!</strong> mendaftar, silahkan Login!.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>';
-            } else if ($_GET['pesan'] == 'successrepassword') {
-                echo '<div id="alert-login" class="text-center alert alert-success alert-dismissible fade show position-fixed alert-login mx-auto" role="alert">
-                      Anda <strong>Berhasil!</strong> mengganti password baru, silahkan Login!.
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>';
             }
         }
         ?>

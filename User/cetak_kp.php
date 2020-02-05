@@ -3,8 +3,8 @@
 include 'includes/connector.php';
 include 'includes/fpdf.php';
 session_start();
-if (isset($_GET['ID_DAFTAR'])) {
-	$id_daftar = $_GET['ID_DAFTAR'];
+if (isset($_GET['NISN'])) {
+	$NISN = $_GET['NISN'];
 }
 
 ?>
@@ -28,7 +28,7 @@ $get_peserta = "SELECT
         AND daftar.NPSN= sekolah.NPSN
         AND detail_daftar.ID_DAFTAR= daftar.ID_DAFTAR
 		AND daftar.ID_JENIS_LOMBA = jenis_lomba.ID_JENIS_LOMBA
-		AND daftar.ID_DAFTAR='$id_daftar'";
+		AND siswa.NISN='$NISN'";
 
 $run_peserta = mysqli_query($koneksi, $get_peserta);
 
