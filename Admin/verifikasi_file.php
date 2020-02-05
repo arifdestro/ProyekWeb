@@ -80,7 +80,7 @@ if(isset($_SESSION['admin_login'])){
                             <td>'.$data['FILE_ABSTRAK'].'</td>
                             <td>'.$data['STATUS_FILE'].'</td>
                             <td>
-                            <a href="verifikasi_rekom_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" data-dismiss="modal">Verifikasi</a>
+                            <a href="verifikasi_file_info.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" data-dismiss="modal">Verifikasi</a>
                             </td>
 
                         </tr>

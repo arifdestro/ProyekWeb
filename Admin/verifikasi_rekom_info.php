@@ -73,11 +73,11 @@ if(isset($_SESSION['admin_login'])){
                         if ($status_trs == 'Belum Terverifikasi') {
                             echo '<a href="verifikasi_rekom_query.php?action=update&ID_DAFTAR='. $ID_DAFTAR .'" class="btn btn-primary">Verifikasi</a>';
                         }else if ($status_trs== 'Sudah Terverifikasi'){
-                            echo '<a href="#" class="btn btn-secondary">Verifikasi</a>';
+                            echo '<a href="#" class="btn btn-secondary">Sudah Terverifikasi</a>';
                         }
                         ?>
                     </td>
-                    <a href="../yuser/images/<?= $SURAT_REKOM?>" class="btn btn-primary">Lihat</a>
+                    <a href="../User/src/rekom/<?= $SURAT_REKOM?>" class="btn btn-primary">Lihat</a>
                     <a href="verifikasi_rekom.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                 </div>
             </div>

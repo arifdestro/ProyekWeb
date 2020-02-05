@@ -76,11 +76,11 @@ if(isset($_SESSION['admin_login'])){
                             '<a href="../yuser/images/<?= $SURAT_REKOM?>">Lihat</a>';
 
                         }else if ($status_trs== 'Sudah Terverifikasi'){
-                            echo '<a href="../yuser/images/<?= $SURAT_REKOM?>">Lihat</a>';
+                            echo '<a href="#" class="btn btn-secondary">Sudah Terverifikasi</a>';
                         }
                         ?>
                         </td>
-                    <a href="../yuser/images/<?= $FILE_ABSTRAK?>" class="btn btn-primary">Lihat</a>
+                    <a href="../User/src/abstrak/<?= $FILE_ABSTRAK?>" class="btn btn-primary">Lihat</a>
                     <a href="verifikasi_file.php" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                 </div>
             </div>
