@@ -30,6 +30,8 @@ $ID_ADMIN = $data_admin['ID_ADMIN'];
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
     </head>
 
     <body id="page-top">

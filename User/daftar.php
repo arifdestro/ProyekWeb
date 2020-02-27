@@ -3,9 +3,7 @@ session_start();
 require 'includes/connector.php';
 require 'includes/header.php';
 
-if (isset($_SESSION['user_login'])) {
-    $NAMA_USER=$_SESSION['NAMA_USER'];
-    $ID_USER=$_SESSION['ID_USER'];
+
 
 ?>
 
@@ -99,15 +97,20 @@ if (isset($_SESSION['user_login'])) {
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                 <label for="Jenis Lomba">Pilih Jenis Lomba</label>
                                     <select required name="ID_JENIS_LOMBA" class="form-control">
-                                        <option value="">--pilih lomba yang ingin anda ikuti--</option>
-                                        <option value="J0001">Olimpiade Mipa</option>
-                                        <option value="J0002">Science Product</option>
+                                    <?php
+                                    $jl=mysqli_query($koneksi,"SELECT * FROM jenis_lomba");                                  
+                                    $counter=1;
+                                    while($for_jl=mysqli_fetch_array($jl)){
+                                    ?>
+                                        <option value="<?php echo $for_jl['ID_JENIS_LOMBA']?>"><?php echo $for_jl['NAMA_LOMBA']?></option>
+                                    <?php
+                                    } $counter++;
+                                    ?>
                                     </select>
                                 </div>
                             </div>
@@ -612,10 +615,6 @@ if (isset($_SESSION['user_login'])) {
 </body>
 </html>
 
-<?php } else {
-        require 'index.php';
-    }
-?>
 
 <?php require 'includes/footer.php'?>
 <!-- <a href="tambah_siswa.php?ID_DAFTAR='.$data['ID_DAFTAR'].'" class="btn btn-primary" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Lihat Detail</a> -->

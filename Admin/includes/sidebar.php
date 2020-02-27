@@ -11,11 +11,18 @@ $ID_ADMIN = $data_admin['ID_ADMIN'];
 
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-<li class="nav-item">
-    <a class="nav-link" href="index.php">
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>Dashboard</span>
+    <span>Landing Page</span>
     </a>
+    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+    <a class="dropdown-item" href="slideshow.php">Slide Show</a>
+    <a class="dropdown-item" href="pengurus.php">Pengurus</a>
+    <a class="dropdown-item" href="kontak.php">Kontak</a>
+    <a class="dropdown-item" href="berita.php">Berita</a>
+    <a class="dropdown-item" href="agenda.php">Agenda</a>
+    </div>
 </li>
 
 <li class="nav-item dropdown">

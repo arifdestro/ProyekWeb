@@ -3,9 +3,7 @@ session_start();
 include 'includes/connector.php';
 include 'includes/header.php';
 
-if (isset($_SESSION['user_login'])) {
-    $NAMA_USER = $_SESSION['NAMA_USER'];
-    $ID_USER = $_SESSION['ID_USER'];
+
 
 ?>
 
@@ -124,7 +122,3 @@ if (isset($_SESSION['user_login'])) {
     </div>
 
     <?php include 'includes/footer.php'; ?>
-<?php } else {
-    require 'index.php';
-}
-?>
