@@ -16,9 +16,9 @@ if (isset($_POST['konfir_pembayaran'])) {
         if ($ukuran < 10132210 && $ukuran != 0) {
             $id = rand(0, 100);
             $uniq = uniqid($id, true);
-            move_uploaded_file($file_temporary, 'img/bukti_transfer/' . $uniq . '.' . $ekstensi); //untuk upload file
+            move_uploaded_file($file_temporary, 'src/bukti_transfer/' . $uniq . '.' . $ekstensi); //untuk upload file
             // $query = mysqli_query ($con, "SELECT * FROM user");
-            mysqli_query($koneksi, "UPDATE daftar SET STATUS_BAYAR ='Proses Verfikasi' WHERE ID_DAFTAR = '$id_daftar'");
+            mysqli_query($koneksi, "UPDATE daftar SET STATUS_BAYAR ='Proses Verifikasi' WHERE ID_DAFTAR = '$id_daftar'");
             $query = mysqli_query($koneksi, "UPDATE bayar SET BUKTI_BAYAR='$uniq.$ekstensi',TGL_BAYAR='$tgl_bayar' WHERE ID_DAFTAR='$id_daftar'");
             if ($query) {
                 header("location:pesan_verif.php");

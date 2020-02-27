@@ -1,6 +1,6 @@
 <?php
 include 'includes/connector.php';
-require 'includes/header.php';
+require 'includes/header_index.php';
 ?>
 <!--  ======================= Start Main Area ================================ -->
 <main class="site-main">
@@ -14,7 +14,7 @@ require 'includes/header.php';
                     <h4 class="title-text text-uppercase text-white">Sistem Informasi Lomba</h4>
                     <div class="site-buttons">
                         <div class="d-flex flex-row flex-wrap">
-                            <a href="register.php" class="btn button primary-button mr-4 text-uppercase">Register</a>
+                            <a href="faq.php#simba" class="btn button primary-button mr-4 text-uppercase">Learn More</a>
                             <a type="button" class="btn button secondary-button text-uppercase">Lebih
                                 Lanjut</a>
                         </div>

@@ -58,8 +58,8 @@ include 'includes/header.php';
                                         if (isset($_GET['ID_DAFTAR'])) {
                                             $id_daftar = $_GET['ID_DAFTAR'];
                                         }
-                                        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.NPSN, rayon.NAMA_RAYON,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.STATUS_BAYAR FROM sekolah,rayon,jenis_lomba,user,daftar
-                            WHERE daftar.ID_USER='$ID_USER' AND rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN");
+                                        $result = mysqli_query($koneksi, "SELECT daftar.ID_DAFTAR,daftar.NPSN, rayon.NAMA_RAYON,user.NAMA_USER, jenis_lomba.NAMA_LOMBA, daftar.STATUS_BAYAR , daftar.STATUS_REKOM FROM sekolah,rayon,jenis_lomba,user,daftar
+                            WHERE daftar.ID_USER='$ID_USER' AND rayon.ID_RAYON= daftar.ID_RAYON AND daftar.ID_USER = user.ID_USER AND jenis_lomba.ID_JENIS_LOMBA= daftar.ID_JENIS_LOMBA AND sekolah.NPSN = daftar.NPSN AND daftar.STATUS_REKOM='Sudah Terverifikasi' ");
 
 
                                         if (mysqli_num_rows($result) > 0) {
@@ -103,13 +103,13 @@ include 'includes/header.php';
                                         } else {
                                             echo '
                             <tr>
-                                <td colspan="6"><b>Tidak ada data.</b></td>
+                                <td colspan="6"><b>Menunggu Verifikasi surat rekom dari admin.</b></td>
                             </tr>
                             ';
                                         }
                                         ?>
 
-                                        <body>
+                                        </tbody>
 
                                 </table>
         </form>

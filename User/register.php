@@ -36,6 +36,13 @@ include 'includes/header.php';
 								</div>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="ti-hp"></i></span>
+									</div>
+									<input type="text" class="form-control input-login" name="no_hp" id="no_hp" placeholder="Nomor HP" maxlength="13" 
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="No Telepon" required autocomplete="off"title="Masukkan No Handphone anda">
+								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ti-lock"></i></span>
 									</div>
 									<input type="password" class="form-control input-login" placeholder="Kata sandi" name="password" id="password" aria-describedby="passwordHelp" required title="Password harus terdiri atas huruf kecil dan
